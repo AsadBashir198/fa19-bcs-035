@@ -1,13 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
+import 'IconTextFile.dart';
 
+const activeColor =Color(0xFF1D1E33);
+const deActiveColor =Color(0xFF111328);
 class inputpage extends StatefulWidget {
   @override
   State<inputpage> createState() => _inputpageState();
 }
 
 class _inputpageState extends State<inputpage> {
+  Color malecolor=deActiveColor;
+  Color femalecolor= deActiveColor;
+  void updateColor(int gender)
+  {
+  if(gender==1){
+    Color malecolor=activeColor;
+    Color femalecolor= deActiveColor;
+  }
+  if(gender==2){
+    Color malecolor=activeColor;
+    Color femalecolor= deActiveColor;
+  }
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -20,19 +36,33 @@ class _inputpageState extends State<inputpage> {
         children: [
           Expanded(child:Row(
             children: [
-              Expanded(child:RepeatContainerCode(
-                colors:Color(0xFF1D1E33),
-                cardwidget: repeatTextandIcon(
-                  iconData: FontAwesomeIcons.male,
-                  label: 'Male',
-                ),
+              Expanded(child:GestureDetector(
+                onTap:   () {
+                  setState(() {
+                    updateColor(1);
+                  });
+                },
+                child: RepeatContainerCode(
+                  colors:malecolor,
+                  cardwidget: repeatTextandIcon(
+                    iconData: FontAwesomeIcons.male,
+                    label: 'Male',
+                  ),
 
+                ),
               ),),
-              Expanded(child:RepeatContainerCode(
-                colors:Color(0xFF1D1E33),
-                cardwidget: repeatTextandIcon(
-                  iconData: FontAwesomeIcons.female,
-                  label: 'Female',
+              Expanded(child:GestureDetector(
+                onTap:   () {
+                  setState(() {
+                    updateColor(2);
+                  });
+                },
+                child: RepeatContainerCode(
+                  colors:femalecolor,
+                  cardwidget: repeatTextandIcon(
+                    iconData: FontAwesomeIcons.female,
+                    label: 'Female',
+                  ),
                 ),
               ),),
             ],
@@ -76,37 +106,6 @@ class _inputpageState extends State<inputpage> {
   }
 }
 
-class repeatTextandIcon extends StatelessWidget {
-  repeatTextandIcon({required this.iconData,required this.label});
- final  IconData iconData;
- final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          iconData ,
-          size: 80.0,
-
-        ),
-         SizedBox(
-           height: 20.0,
-           width: 21.0,
-         ),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Color(0xFF8D8E98),
-          ),
-        )
-      ],
-    );
-  }
-}
-
 class RepeatContainerCode extends StatelessWidget {
   RepeatContainerCode({required this.colors,required this.cardwidget});
   final Color colors;
@@ -118,8 +117,8 @@ class RepeatContainerCode extends StatelessWidget {
       margin: EdgeInsets.all(15.0),
       child: cardwidget,
       decoration: BoxDecoration(
-        color:colors,
-        borderRadius: BorderRadius.circular(10.0)
+          color:colors,
+          borderRadius: BorderRadius.circular(10.0)
       ),
     );
   }
