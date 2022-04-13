@@ -16,7 +16,9 @@ class inputpage extends StatefulWidget {
 }
 
 class _inputpageState extends State<inputpage> {
-  Color malecolor=deActiveColor;
+   Gender? selectGender;
+
+  /* Color malecolor=deActiveColor;
   Color femalecolor= deActiveColor;
   void updateColor(Gender gendertype)
   {
@@ -28,7 +30,7 @@ class _inputpageState extends State<inputpage> {
     Color malecolor=activeColor;
     Color femalecolor= deActiveColor;
   }
-  }
+  }*/
   @override
   Widget build(BuildContext context) {
 
@@ -41,35 +43,35 @@ class _inputpageState extends State<inputpage> {
         children: [
           Expanded(child:Row(
             children: [
-              Expanded(child:GestureDetector(
-                onTap:   () {
-                  setState(() {
-                    updateColor(Gender.male);
-                  });
-                },
+              Expanded(
                 child: RepeatContainerCode(
-                  colors:malecolor,
+                        onPressed:(){
+                          setState(() {
+                            selectGender=Gender.male;
+                          });
+                        },
+                  colors:selectGender==Gender.male?activeColor:deActiveColor,
                   cardwidget: repeatTextandIcon(
                     iconData: FontAwesomeIcons.male,
                     label: 'Male',
                   ),
 
                 ),
-              ),),
-              Expanded(child:GestureDetector(
-                onTap:   () {
-                  setState(() {
-                    updateColor(Gender.female);
-                  });
-                },
+              ),
+              Expanded(
                 child: RepeatContainerCode(
-                  colors:femalecolor,
+                  onPressed:(){
+                    setState(() {
+                      selectGender=Gender.female;
+                    });
+                  },
+                  colors:selectGender==Gender.female?activeColor:deActiveColor,
                   cardwidget: repeatTextandIcon(
                     iconData: FontAwesomeIcons.female,
                     label: 'Female',
                   ),
                 ),
-              ),),
+              ),
             ],
 
           ),),
@@ -77,6 +79,11 @@ class _inputpageState extends State<inputpage> {
           Expanded(child:Row(
             children: [
               Expanded(child:RepeatContainerCode(
+                onPressed:(){
+                  setState(() {
+                    selectGender=Gender.male;
+                  });
+                },
                colors:Color(0xFF1D1E33),
                 cardwidget: repeatTextandIcon(
                   iconData: FontAwesomeIcons.female,
@@ -88,6 +95,11 @@ class _inputpageState extends State<inputpage> {
 
           Expanded(child:Row(children: [
             Expanded(child:RepeatContainerCode(
+              onPressed:(){
+                setState(() {
+                  selectGender=Gender.male;
+                });
+              },
               colors:Color(0xFF1D1E33),
               cardwidget: repeatTextandIcon(
                 iconData: FontAwesomeIcons.male,
@@ -95,6 +107,11 @@ class _inputpageState extends State<inputpage> {
               ),
             ),),
             Expanded(child:RepeatContainerCode(
+              onPressed:(){
+                setState(() {
+                  selectGender=Gender.male;
+                });
+              },
               colors:Color(0xFF1D1E33),
               cardwidget: repeatTextandIcon(
                 iconData: FontAwesomeIcons.male,
@@ -112,18 +129,22 @@ class _inputpageState extends State<inputpage> {
 }
 
 class RepeatContainerCode extends StatelessWidget {
-  RepeatContainerCode({required this.colors,required this.cardwidget});
+  RepeatContainerCode({required this.colors,required this.cardwidget,required this.onPressed});
   final Color colors;
   final  Widget cardwidget;
+  final  VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      child: cardwidget,
-      decoration: BoxDecoration(
-          color:colors,
-          borderRadius: BorderRadius.circular(10.0)
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        margin: EdgeInsets.all(15.0),
+        child: cardwidget,
+        decoration: BoxDecoration(
+            color:colors,
+            borderRadius: BorderRadius.circular(10.0)
+        ),
       ),
     );
   }
