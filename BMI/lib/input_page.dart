@@ -1,10 +1,11 @@
+import 'package:bmi/constantFile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'IconTextFile.dart';
+import 'constantFile.dart';
 
-const activeColor =Color(0xFF1D1E33);
-const deActiveColor =Color(0xFF111328);
+
 enum Gender{
   male,
   female,
@@ -17,6 +18,7 @@ class inputpage extends StatefulWidget {
 
 class _inputpageState extends State<inputpage> {
    Gender? selectGender;
+   int sliderHeight=180;
 
   /* Color malecolor=deActiveColor;
   Color femalecolor= deActiveColor;
@@ -40,6 +42,7 @@ class _inputpageState extends State<inputpage> {
         title: Text("BMI CALCULATOR"),
       ),
     body: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(child:Row(
             children: [
@@ -85,14 +88,42 @@ class _inputpageState extends State<inputpage> {
                   });
                 },
                colors:Color(0xFF1D1E33),
-                cardwidget: repeatTextandIcon(
-                  iconData: FontAwesomeIcons.female,
-                  label: 'Female',
+                cardwidget: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('HEIGHT',style: kLabelStyle,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          sliderHeight.toString(),
+                          style:kNumberStyle,
+                        ),
+                        Text(
+                          'cm',
+                          style:kLabelStyle,
+                        ),
+                      ],
+                      ),
+                      Slider(
+                      value: sliderHeight.toDouble();
+    min:120.0;
+    max:220.0;
+    activeColor =Color(0xFF1D1E33);
+    inactiveColor =Color(0xFF8D8E98),
+    onChanged: (double newValue)
+    {
+    SetState((){
+    sliderHeight=newValue.round();
+    }
+    );
+    ),
+                  ],
                 ),
               ),),
             ],
-          ),),
-
+          ),
+          ),
           Expanded(child:Row(children: [
             Expanded(child:RepeatContainerCode(
               onPressed:(){
