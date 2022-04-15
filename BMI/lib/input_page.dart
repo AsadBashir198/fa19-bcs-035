@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'IconTextFile.dart';
 import 'constantFile.dart';
+import 'resultFile.dart';
 
 
 enum Gender{
@@ -120,8 +121,6 @@ class _inputpageState extends State<inputpage> {
     );
     },
     ),
-
-
                   ],
                 ),
               ),),
@@ -217,12 +216,24 @@ class _inputpageState extends State<inputpage> {
           ],
 
           ),),
-          Container(
-            color: Color(0xFFEB1555),
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: 80.0,
-          )
+         GestureDetector(
+    onTap: (){
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>ResultScreen()));
+
+    },
+   child:Container(
+    child: Center(
+    child: Text(
+    'Calculate ',
+    style: kLargeButtonstyle,
+    ),
+    ),
+    color: Color(0xFFEB1555),
+    margin: EdgeInsets.only(top: 10.0),
+    width: double.infinity,
+    height: 80.0,
+    )
+    )
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
