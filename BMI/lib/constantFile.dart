@@ -15,4 +15,21 @@ fontWeight: FontWeight.w900,
 const kLargeButtonstyle=TextStyle(
   fontSize: 25.0,
   fontWeight: FontWeight.bold,
-)
+);
+const kTitleStyleS2=TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);
+const kResultText=TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);
+const kBMiTextStyle=TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);
+const kbodyTextStyle=TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);
+
