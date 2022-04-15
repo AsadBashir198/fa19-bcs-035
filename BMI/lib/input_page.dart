@@ -108,20 +108,7 @@ class _inputpageState extends State<inputpage> {
                         ),
                       ],
                       ),
-                      Slider(
-                      value: sliderHeight.toDouble();
-    min:120.0;
-    max:220.0;
-    activeColor =Color(0xFF1D1E33);
-    inactiveColor =Color(0xFF8D8E98),
-    onChanged: (double newValue)
-    {
-    SetState((){
-    sliderHeight=newValue.round();
-    }
-    );
-    },
-    ),
+
                   ],
                 ),
               ),),
@@ -270,9 +257,10 @@ class RepeatContainerCode extends StatelessWidget {
 }
 
 class RoundIcon extends StatelessWidget {
-  RoundIcon({required this.iconData,required this.onPress});
+  RoundIcon({required this.iconData, required this.onPress});
+
   final IconData iconData;
-  final Function onPress;
+  final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
