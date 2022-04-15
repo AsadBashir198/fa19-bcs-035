@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'IconTextFile.dart';
 import 'constantFile.dart';
 import 'resultFile.dart';
+import 'calculatorFile.dart';
 
 
 enum Gender{
@@ -218,7 +219,12 @@ class _inputpageState extends State<inputpage> {
           ),),
          GestureDetector(
     onTap: (){
-      Navigator.push(context,MaterialPageRoute(builder: (context)=>ResultScreen()));
+      CalculatorBrain calc=CalculatorBrain(height: sliderHeight,weight: sliderWeight);
+      Navigator.push(context,MaterialPageRoute(builder: (context)=>ResultScreen(
+    bmiResult: calc.calculateBMI(),
+    resultText: calc.getResult(),
+    interpretation: calc.getInterpretation(),
+    )));
 
     },
    child:Container(

@@ -1,11 +1,22 @@
 import 'dart:html';
+import 'package:bmi/main.dart';
+
 import 'constantFile.dart';
 import 'package:bmi/constantFile.dart';
 import 'package:flutter/material.dart';
 import 'input_page.dart';
 
  class ResultScreen extends StatelessWidget {
-   const ResultScreen({Key? key}) : super(key: key);
+   ResultScreen({
+     required this.interpretation,
+     required this.bmiResult,
+     required this.resultText
+   });
+
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
 
    @override
    Widget build(BuildContext context) {
@@ -15,7 +26,7 @@ import 'input_page.dart';
        ),
        body: Column(
          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-         CrossAxisAlignment: CrossAxisAlignment.stretch,
+         crossAxisAlignment: CrossAxisAlignment.stretch,
          children: [
 
            Expanded(
@@ -36,20 +47,20 @@ import 'input_page.dart';
                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                      crossAxisAlignment: CrossAxisAlignment.center,
                      children: [
-                       Text('Normal',style: kResultText),
-                       Text('18.3',style: kBMiTextStyle),
-                       Text('BMI IS LOW you should have to work more',
+                       Text(resultText.toUpperCase(),style: kResultText),
+                       Text(bmiResult,style: kBMiTextStyle),
+                       Text(interpretation,
                        textAlign: TextAlign.center,
                        style: kbodyTextStyle,
                        ),
                      ],
-                   ),
+                   ), onPressed: () {  },
                ),
            ),
            Expanded(
              child:     GestureDetector(
                  onTap: (){
-                   Navigator.push(context,MaterialPageRoute(builder: (context)=>InputPage()));
+                   Navigator.push(context,MaterialPageRoute(builder: (context)=>inputpage()));
 
                  },
                  child:Container(
