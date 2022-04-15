@@ -19,6 +19,7 @@ class inputpage extends StatefulWidget {
 class _inputpageState extends State<inputpage> {
    Gender? selectGender;
    int sliderHeight=180;
+   int sliderWeight=60;
 
   /* Color malecolor=deActiveColor;
   Color femalecolor= deActiveColor;
@@ -117,7 +118,9 @@ class _inputpageState extends State<inputpage> {
     sliderHeight=newValue.round();
     }
     );
+    },
     ),
+
                   ],
                 ),
               ),),
@@ -126,16 +129,20 @@ class _inputpageState extends State<inputpage> {
           ),
           Expanded(child:Row(children: [
             Expanded(child:RepeatContainerCode(
-              onPressed:(){
-                setState(() {
-                  selectGender=Gender.male;
-                });
-              },
               colors:Color(0xFF1D1E33),
-              cardwidget: repeatTextandIcon(
-                iconData: FontAwesomeIcons.male,
-                label: 'Male',
-              ),
+              cardwidget: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'WEIGHT',
+                    style: kLabelStyle,
+                  ),
+                   Text(
+                       sliderWeight.toString(),
+                     style: kNumberStyle,
+                   )
+                ],
+              )
             ),),
             Expanded(child:RepeatContainerCode(
               onPressed:(){
