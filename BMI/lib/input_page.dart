@@ -20,6 +20,7 @@ class _inputpageState extends State<inputpage> {
    Gender? selectGender;
    int sliderHeight=180;
    int sliderWeight=60;
+   int sliderAge=20;
 
   /* Color malecolor=deActiveColor;
   Color femalecolor= deActiveColor;
@@ -79,7 +80,6 @@ class _inputpageState extends State<inputpage> {
             ],
 
           ),),
-
           Expanded(child:Row(
             children: [
               Expanded(child:RepeatContainerCode(
@@ -121,6 +121,7 @@ class _inputpageState extends State<inputpage> {
     },
     ),
 
+
                   ],
                 ),
               ),),
@@ -140,9 +141,33 @@ class _inputpageState extends State<inputpage> {
                    Text(
                        sliderWeight.toString(),
                      style: kNumberStyle,
-                   )
+                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RoundIcon(
+                        iconData: FontAwesomeIcons.minus ,
+                         onPress: (){
+                          setState(() {
+                            sliderWeight--;
+                          });
+                         }
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      RoundIcon(
+                          iconData: FontAwesomeIcons.minus ,
+                          onPress: (){
+                            setState(() {
+                              sliderWeight++;
+                            });
+                          }
+                      ),
+                    ],
+                  )
                 ],
-              )
+              ), onPressed: () {  },
             ),),
             Expanded(child:RepeatContainerCode(
               onPressed:(){
@@ -151,14 +176,53 @@ class _inputpageState extends State<inputpage> {
                 });
               },
               colors:Color(0xFF1D1E33),
-              cardwidget: repeatTextandIcon(
-                iconData: FontAwesomeIcons.male,
-                label: 'Male',
+              cardwidget: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'AGE',
+                    style: kLabelStyle,
+                  ),
+                  Text(
+                    sliderAge.toString(),
+                    style: kNumberStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RoundIcon(
+                          iconData: FontAwesomeIcons.minus ,
+                          onPress: (){
+                            setState(() {
+                              sliderAge--;
+                            });
+                          }
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      RoundIcon(
+                          iconData: FontAwesomeIcons.minus ,
+                          onPress: (){
+                            setState(() {
+                              sliderAge++;
+                            });
+                          }
+                      ),
+                    ],
+                  )
+                ],
               ),
             ),),
           ],
 
           ),),
+          Container(
+            color: Color(0xFFEB1555),
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: 80.0,
+          )
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
@@ -187,3 +251,25 @@ class RepeatContainerCode extends StatelessWidget {
     );
   }
 }
+
+class RoundIcon extends StatelessWidget {
+  RoundIcon({required this.iconData,required this.onPress});
+  final IconData iconData;
+  final Function onPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(iconData),
+      onPressed: onPress,
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(
+        height: 56.0,
+        width: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+    );
+  }
+}
+
