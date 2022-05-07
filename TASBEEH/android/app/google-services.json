@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "604282791548",
+    "project_id": "asad-3f0dd",
+    "storage_bucket": "asad-3f0dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604282791548:android:cfeca3ceb115b59974cbf9",
+        "android_client_info": {
+          "package_name": "com.example.tasbeeh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604282791548-r7cbsf94snukgmhgi102ok8j71repb12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdsznsurmUCWC15pcR0f5Awi2oMWIkZus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604282791548-r7cbsf94snukgmhgi102ok8j71repb12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
