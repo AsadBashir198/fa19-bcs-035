@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'home.dart';
+
 class select extends StatefulWidget {
 
 
@@ -37,7 +39,12 @@ class _selectState extends State<select> {
                   )
               ),
               textColor: Colors.green,
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  home()),
+                );
+              },
             ),
             SizedBox(height: 10.0,),
             FlatButton(
@@ -53,7 +60,12 @@ class _selectState extends State<select> {
                   )
               ),
               textColor: Colors.green,
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  home()),
+                );
+              },
             ),
 
             SizedBox(height: 10.0,),
@@ -71,7 +83,12 @@ class _selectState extends State<select> {
                   )
               ),
               textColor: Colors.green,
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  home()),
+                );
+              },
             ),
 
           ],

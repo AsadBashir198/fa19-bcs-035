@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 class home extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
+
     return new makeItRainState();
   }
 
@@ -29,7 +29,7 @@ class makeItRainState extends State<home> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Tashbeh Counter'),
