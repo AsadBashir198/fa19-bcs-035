@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tasbeeh/AllahuAkbar.dart';
+import 'package:tasbeeh/alhamdulillah.dart';
+import 'package:tasbeeh/subhanAllah.dart';
 
 import 'home.dart';
 
@@ -42,7 +45,7 @@ class _selectState extends State<select> {
               onPressed: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  home()),
+                  MaterialPageRoute(builder: (context) =>  AllahuAkbar()),
                 );
               },
             ),
@@ -63,7 +66,7 @@ class _selectState extends State<select> {
               onPressed: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  home()),
+                  MaterialPageRoute(builder: (context) =>  subhanAllah()),
                 );
               },
             ),
@@ -86,7 +89,7 @@ class _selectState extends State<select> {
               onPressed: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  home()),
+                  MaterialPageRoute(builder: (context) =>  alhamdulillah()),
                 );
               },
             ),
