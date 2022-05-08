@@ -41,7 +41,7 @@ class makeItRainState extends State<alhamdulillah> {
               new Center(
                 child: new Text("Tasbeeh!",
                   style: new TextStyle(fontSize: 30.0,
-                      color: Colors.greenAccent),),
+                      color: Colors.black),),
               ),
               new Expanded(
                   child: new Center(
@@ -52,6 +52,8 @@ class makeItRainState extends State<alhamdulillah> {
                           fontWeight: FontWeight.w500
                       ),),
                   )),
+              SizedBox(height: 100.0),
+
               new Expanded(
                   child: new Center(
                     child: new FlatButton(color: Colors.lightGreen,
@@ -63,6 +65,7 @@ class makeItRainState extends State<alhamdulillah> {
                               color: Colors.black
                           ),)),
                   )),
+              SizedBox(height: 15.0),
               new Expanded(
                   child: new Center(
                     child: new FlatButton(color: Colors.lightGreen,
@@ -73,7 +76,21 @@ class makeItRainState extends State<alhamdulillah> {
                               fontSize: 18.3,
                               color: Colors.black
                           ),)),
-                  ))
+                  )),
+              SizedBox(height: 150.0),
+
+              new Expanded(
+                  child: new Center(
+                    child: new FlatButton(color: Colors.lightGreen,
+                        textColor: Theme.of(context).buttonColor,
+                        onPressed: refresh,
+                        child: new Text("Save Tasbeeh",
+                          style: new TextStyle(
+                              fontSize: 18.3,
+                              color: Colors.black
+                          ),)),
+                  )),
+              SizedBox(height: 250.0),
             ],
           )
 

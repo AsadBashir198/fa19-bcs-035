@@ -16,10 +16,100 @@ class _createTasbeehState extends State<createTasbeeh> {
   Widget build(BuildContext context) {
 
     return new Scaffold(
+      drawer: Drawer(
+        backgroundColor: Color(0xFEDBF59C),
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.lime,
+
+              ),
+              child: CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage("images/img_2.png"),
+              ),
+            ),
+            Text(
+              'Quiz App',
+              style: TextStyle(
+                  height: 2,
+                  fontFamily: 'SpecialElite',
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0),
+            ),
+            Text(
+              'Version 1.0.0',
+              style: TextStyle(
+                  height: 2,
+                  fontFamily: 'SpecialElite',
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0),
+            ),
+            ListTile(
+              title: const Text('Home'),
+              onTap: () {
+                // Update the state of the app
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  createTasbeeh()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Feedback'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('info'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Setting'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+
+            ListTile(
+              title: const Text('Contact Us'),
+              onTap: () {
+
+                // Update the state of the app
+
+                // Then close the drawer
+
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: new AppBar(
         title: new Text('Tasbeeh Counter'),
         backgroundColor: Colors.green,
+
       ),
+
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
