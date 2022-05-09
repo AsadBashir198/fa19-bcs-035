@@ -18,9 +18,7 @@ class _createTasbeehState extends State<createTasbeeh> {
     return new Scaffold(
       drawer: Drawer(
         backgroundColor: Color(0xFEDBF59C),
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
+
         child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
@@ -32,11 +30,11 @@ class _createTasbeehState extends State<createTasbeeh> {
               ),
               child: CircleAvatar(
                 radius: 50.0,
-                backgroundImage: AssetImage("images/img_2.png"),
+                backgroundImage: AssetImage("images/dd.jpg"),
               ),
             ),
             Text(
-              'Quiz App',
+              'Tasbeeh App ',
               style: TextStyle(
                   height: 2,
                   fontFamily: 'SpecialElite',
@@ -64,16 +62,7 @@ class _createTasbeehState extends State<createTasbeeh> {
               },
             ),
             ListTile(
-              title: const Text('Feedback'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('info'),
+              title: const Text('View Tasbeeh'),
               onTap: () {
                 // Update the state of the app
                 // ...

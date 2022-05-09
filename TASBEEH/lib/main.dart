@@ -11,5 +11,6 @@ Future<void> main() async {
   runApp(new MaterialApp(
     title: 'Tasbeeh App',
     home: new createTasbeeh(),
+    debugShowCheckedModeBanner: false,
   ));
 }
