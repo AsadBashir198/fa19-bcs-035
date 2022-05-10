@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tasbeeh/contactus.dart';
 import 'package:tasbeeh/home.dart';
 import 'package:tasbeeh/select.dart';
 
@@ -84,9 +85,10 @@ class _createTasbeehState extends State<createTasbeeh> {
               title: const Text('Contact Us'),
               onTap: () {
 
-                // Update the state of the app
-
-                // Then close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  ContactUs()),
+                );
 
               },
             ),
