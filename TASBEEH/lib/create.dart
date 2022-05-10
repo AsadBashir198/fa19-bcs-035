@@ -104,6 +104,10 @@ class _createTasbeehState extends State<createTasbeeh> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
 
         children:[
+         CircleAvatar(
+            radius: 175.0,
+            backgroundImage: AssetImage("images/tas.png"),
+          ),
           Container(
               width:double.infinity ,
               padding: EdgeInsets.all(20),

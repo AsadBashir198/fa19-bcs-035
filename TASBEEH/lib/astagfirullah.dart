@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'create.dart';
 
-class subhanAllah extends StatefulWidget{
+class astagfirullah extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
 
@@ -13,7 +13,7 @@ class subhanAllah extends StatefulWidget{
 
 }
 
-class MyApp extends State<subhanAllah> {
+class MyApp extends State<astagfirullah> {
   int _tasbeehCount = 0;
 
   void counter() {
@@ -112,7 +112,7 @@ class MyApp extends State<subhanAllah> {
       ),
       appBar: new AppBar(
 
-        title: new Text('Subhan Allah'),
+        title: new Text('Astagfirullah'),
         backgroundColor: Colors.green,
       ),
       body: new Container(

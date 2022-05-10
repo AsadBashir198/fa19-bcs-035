@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:tasbeeh/AllahuAkbar.dart';
 import 'package:tasbeeh/alhamdulillah.dart';
+import 'package:tasbeeh/astagfirullah.dart';
 import 'package:tasbeeh/subhanAllah.dart';
 
 import 'home.dart';
@@ -28,7 +29,12 @@ class _selectState extends State<select> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
 
           children:[
+             CircleAvatar(
+              radius: 150.0,
+              backgroundImage: AssetImage("images/tas.png"),
 
+            ),
+            SizedBox(height: 30.0,),
             FlatButton(
               child:Text("Allah u Akbar"),
               padding: EdgeInsets.symmetric(
@@ -90,6 +96,29 @@ class _selectState extends State<select> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) =>  alhamdulillah()),
+                );
+              },
+            ),
+
+            SizedBox(height: 10.0,),
+            FlatButton(
+
+              child:Text("Astagfirullah"),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 15
+              ),
+              shape: StadiumBorder(
+                  side: BorderSide(
+                      color: Colors.green,
+                      width: 2
+                  )
+              ),
+              textColor: Colors.green,
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  astagfirullah()),
                 );
               },
             ),
