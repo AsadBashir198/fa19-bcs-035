@@ -4,6 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:tasbeeh/contactus.dart';
 import 'package:tasbeeh/home.dart';
 import 'package:tasbeeh/select.dart';
+import 'package:tasbeeh/view.dart';
+
+import 'counter.dart';
 
 class createTasbeeh extends StatefulWidget {
 
@@ -65,10 +68,10 @@ class _createTasbeehState extends State<createTasbeeh> {
             ListTile(
               title: const Text('View Tasbeeh'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  View()),
+                );
               },
             ),
             ListTile(
@@ -110,6 +113,8 @@ class _createTasbeehState extends State<createTasbeeh> {
             radius: 175.0,
             backgroundImage: AssetImage("images/tas.png"),
           ),
+
+          SizedBox(height:50,),
           Container(
               width:double.infinity ,
               padding: EdgeInsets.all(20),
@@ -137,7 +142,26 @@ class _createTasbeehState extends State<createTasbeeh> {
                 onPressed: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => home()),
+                    MaterialPageRoute(builder: (context) => counter()),
+                  );
+                },
+              )
+
+
+          ),
+
+          Container(
+              width:double.infinity ,
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.topCenter,
+              child:FlatButton(
+                child:Text("View Tasbeeh"),
+                textColor: Colors.white,
+                color:Colors.green,
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => View()),
                   );
                 },
               )
