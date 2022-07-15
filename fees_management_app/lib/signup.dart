@@ -34,7 +34,7 @@ class _s_signupState extends State<s_signup> {
                       alignment: Alignment.center,
                       padding: const EdgeInsets.all(10),
                       child: const Text(
-                        'Job Finder App',
+                        'Fees Management App',
                         style: TextStyle(
                             color: Colors.blue,
                             fontWeight: FontWeight.w500,

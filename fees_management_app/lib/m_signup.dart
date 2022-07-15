@@ -64,6 +64,28 @@ class _m_signupState extends State<m_signup> {
                       controller: passwordController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
+                        labelText: 'Phone No',
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: TextField(
+                      obscureText: true,
+                      controller: passwordController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Email',
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: TextField(
+                      obscureText: true,
+                      controller: passwordController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
                         labelText: 'Password',
                       ),
                     ),
