@@ -1,16 +1,16 @@
 import 'package:fees_management_app/student_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:fees_management_app/login.dart';
 import 'package:fees_management_app/autication.dart';
-import 'package:fees_management_app/signup.dart';
 
 
+class m_signup extends StatefulWidget {
 
-class s_login extends StatefulWidget {
   @override
-  State<s_login> createState() => _s_loginState();
+  State<m_signup> createState() => _m_signupState();
 }
 
-class _s_loginState extends State<s_login> {
+class _m_signupState extends State<m_signup> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -18,17 +18,19 @@ class _s_loginState extends State<s_login> {
   Widget build(BuildContext context) {
     return MaterialApp(
 
-      home: Scaffold(
-        body: Container(
+      home:  Scaffold(
 
-        decoration: BoxDecoration(
-        image: DecorationImage(
-        image: AssetImage('assets/sign.png'), fit: BoxFit.cover),),
+        body:  Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/back.png'), fit: BoxFit.cover),),
+
           child: Padding(
               padding: const EdgeInsets.only(top:170),
               child: ListView(
                 children: <Widget>[
                   Container(
+
                       alignment: Alignment.center,
                       padding: const EdgeInsets.all(10),
                       child: const Text(
@@ -42,7 +44,7 @@ class _s_loginState extends State<s_login> {
                       alignment: Alignment.center,
                       padding: const EdgeInsets.all(10),
                       child: const Text(
-                        'Sign in',
+                        'Sign up',
                         style: TextStyle(fontSize: 20),
                       )),
                   Container(
@@ -54,7 +56,6 @@ class _s_loginState extends State<s_login> {
                         labelText: 'Acedemy_Name',
                       ),
                     ),
-
                   ),
                   Container(
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -67,52 +68,44 @@ class _s_loginState extends State<s_login> {
                       ),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      //forgot password screen
-                    },
-                    child: const Text('Forgot Password',),
+                  SizedBox(
+                    height: 20.0,
                   ),
                   Container(
-                      height: 50,
-                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: ElevatedButton(
-                        child: const Text('Login'),
-                        onPressed: () {
-                          AuthenticationHelper()
-                              .signIn(email: nameController.text, password: passwordController.text)
-                              .then((result) {
-                            if (result == null) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => s_detail()),
-                              );
-                            } else {
-                              Scaffold.of(context).showSnackBar(SnackBar(
-                                content: Text(
-                                  result,
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ));
-                            }
-                          });
-                        },
-                      )
+                    height: 50,
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: ElevatedButton(
+                      child: const Text('Sign Up'),
+                      onPressed: () {
+                        AuthenticationHelper()
+                            .signUp(acedemy: nameController.text, password: passwordController.text)
+                            .then((result) {
+                          if (result == null) {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) => s_detail()));
+                          } else {
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                result,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ));
+                          }
+                        });
+                      },
+                    ),
                   ),
                   Row(
                     children: <Widget>[
-                      const Text('Does not have account?'),
+
                       TextButton(
                         child: const Text(
-                          'Sign up',
+                          'Sign in',
                           style: TextStyle(fontSize: 20),
                         ),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => s_signup()),
-                          );
-                          //signup screen
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) => s_login()));
                         },
                       )
                     ],

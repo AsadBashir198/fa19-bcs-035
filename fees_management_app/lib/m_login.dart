@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:fees_management_app/autication.dart';
 import 'package:fees_management_app/signup.dart';
 
+import 'm_signup.dart';
 
 
-class s_login extends StatefulWidget {
+
+class m_login extends StatefulWidget {
   @override
-  State<s_login> createState() => _s_loginState();
+  State<m_login> createState() => _m_loginState();
 }
 
-class _s_loginState extends State<s_login> {
+class _m_loginState extends State<m_login> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -21,9 +23,9 @@ class _s_loginState extends State<s_login> {
       home: Scaffold(
         body: Container(
 
-        decoration: BoxDecoration(
-        image: DecorationImage(
-        image: AssetImage('assets/sign.png'), fit: BoxFit.cover),),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/sign.png'), fit: BoxFit.cover),),
           child: Padding(
               padding: const EdgeInsets.only(top:170),
               child: ListView(
@@ -110,7 +112,7 @@ class _s_loginState extends State<s_login> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => s_signup()),
+                            MaterialPageRoute(builder: (context) => m_signup()),
                           );
                           //signup screen
                         },

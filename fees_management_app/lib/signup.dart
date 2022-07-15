@@ -1,15 +1,16 @@
+import 'package:fees_management_app/student_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:fees_management_app/login.dart';
 import 'package:fees_management_app/autication.dart';
 
 
-class MyStatefulWidget extends StatefulWidget {
+class s_signup extends StatefulWidget {
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<s_signup> createState() => _s_signupState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _s_signupState extends State<s_signup> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -52,7 +53,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       controller: nameController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'User Name',
+                        labelText: 'Acedemy_Name',
                       ),
                     ),
                   ),
@@ -77,11 +78,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         child: const Text('Sign Up'),
                         onPressed: () {
                           AuthenticationHelper()
-                              .signUp(email: nameController.text, password: passwordController.text)
+                              .signUp(acedemy: nameController.text, password: passwordController.text)
                               .then((result) {
                             if (result == null) {
                               Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) => Homepage()));
+                                  MaterialPageRoute(builder: (context) => s_detail()));
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text(
@@ -96,7 +97,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   Row(
                     children: <Widget>[
-                      const Text('Does not have account?'),
+
                       TextButton(
                         child: const Text(
                           'Sign in',
@@ -104,7 +105,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                         onPressed: () {
                            Navigator.pushReplacement(context,
-                                                           MaterialPageRoute(builder: (context) => abc()));
+                                                           MaterialPageRoute(builder: (context) => s_login()));
                         },
                       )
                     ],

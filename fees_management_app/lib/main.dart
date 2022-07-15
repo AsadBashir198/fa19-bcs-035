@@ -1,7 +1,13 @@
+import 'package:fees_management_app/login.dart';
+import 'package:fees_management_app/student_detail.dart';
 import 'package:flutter/material.dart';
 
+import 'm_login.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -15,6 +21,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
+            leading: Icon(Icons.arrow_back),
             backgroundColor: Colors.blueGrey,
             title: Text('Fees Management App'),
           ),
@@ -26,33 +33,61 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () {},
               ),
             ),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: FlatButton(
-                child: Text('Admin'),
-                color: Colors.green,
-                textColor: Colors.white,
-                onPressed: () {},
+
+            GestureDetector(
+              onTap: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>m_login()));
+              },
+
+              child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),
+                  color:Colors.blueGrey ),
+                margin: EdgeInsets.all( 30.0),
+
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    Text(" Admin",style: TextStyle(color:Colors.white,fontSize: 30 ),)
+                  ],
+                ),
               ),
             ),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: FlatButton(
-                child: Text('Teacher '),
-                color: Colors.green,
-                textColor: Colors.white,
-                onPressed: () {},
+            GestureDetector(
+              onTap: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>s_login()));
+              },
+
+              child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),
+                  color:Colors.blueGrey ),
+                margin: EdgeInsets.all( 30.0),
+
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    Text(" Student",style: TextStyle(color:Colors.white,fontSize: 30 ),)
+                  ],
+                ),
               ),
             ),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: FlatButton(
-                child: Text('Student'),
-                color: Colors.green,
-                textColor: Colors.white,
-                onPressed: () {},
+            GestureDetector(
+              onTap: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>s_login()));
+              },
+
+              child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),
+                  color:Colors.blueGrey ),
+                margin: EdgeInsets.all( 30.0),
+
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(" Teacher",style: TextStyle(color:Colors.white,fontSize: 30 ),)
+                  ],
+                ),
               ),
             ),
+
           ]))),
     );
   }
