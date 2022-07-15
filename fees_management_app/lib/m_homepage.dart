@@ -38,7 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
 
         appBar: AppBar(
-leading: Icon(Icons.arrow_back),
+leading: Icon(Icons.arrow_back,
+                                    ),
           title: Text("Fees Management App"),
 
           actionsIconTheme: IconThemeData(size: 32,),
