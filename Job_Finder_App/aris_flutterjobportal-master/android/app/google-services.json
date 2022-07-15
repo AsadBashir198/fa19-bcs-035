@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "872099081870",
+    "project_id": "job-finder-app-4af4d",
+    "storage_bucket": "job-finder-app-4af4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872099081870:android:62fa9d963f621dac8023df",
+        "android_client_info": {
+          "package_name": "com.example.aris_flutterjobportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872099081870-63ik30vieuhbd6qd8o6eih5a8sk5cg3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD346tJg_BjdT0xIKnVFqh-wWpAYaFy430"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872099081870-63ik30vieuhbd6qd8o6eih5a8sk5cg3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
