@@ -17,10 +17,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+
           appBar: AppBar(
+
             leading: Icon(Icons.arrow_back),
             backgroundColor: Colors.blueGrey,
             title: Text('Fees Management App'),
@@ -90,5 +92,4 @@ class _MyAppState extends State<MyApp> {
 
           ]))),
     );
-  }
 }

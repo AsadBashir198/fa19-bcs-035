@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fees_management_app/autication.dart';
 import 'package:fees_management_app/signup.dart';
 
+import 'm_homepage.dart';
 import 'm_signup.dart';
 
 
@@ -81,23 +82,10 @@ class _m_loginState extends State<m_login> {
                       child: ElevatedButton(
                         child: const Text('Login'),
                         onPressed: () {
-                          AuthenticationHelper()
-                              .signIn(email: nameController.text, password: passwordController.text)
-                              .then((result) {
-                            if (result == null) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => s_detail()),
-                              );
-                            } else {
-                              Scaffold.of(context).showSnackBar(SnackBar(
-                                content: Text(
-                                  result,
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ));
-                            }
-                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => m_homepage()),
+                          );
                         },
                       )
                   ),
