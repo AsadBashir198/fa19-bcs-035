@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>fees()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>fees1()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                     color:Colors.blueGrey ),

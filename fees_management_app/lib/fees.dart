@@ -1,15 +1,16 @@
+import 'package:fees_management_app/fee_monthwise.dart';
 import 'package:flutter/material.dart';
 
 import 'fee_classwise.dart';
 import 'm_homepage.dart';
 
 
-class fees extends StatefulWidget {
+class fees1 extends StatefulWidget {
   @override
-  _feesState createState() => _feesState();
+  _fees1State createState() => _fees1State();
 }
 
-class _feesState extends State<fees> {
+class _fees1State extends State<fees1> {
   @override
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -61,7 +62,7 @@ class _feesState extends State<fees> {
           ),
           GestureDetector(
             onTap: (){
-
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>fee_monthwise()));
             },
 
             child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),

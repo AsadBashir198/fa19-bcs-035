@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'm_homepage.dart';
 
 
-class fee_classwise extends StatelessWidget {
+class fee_monthwise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,12 +25,12 @@ class EditProfilePage extends StatefulWidget {
 class _EditProfilePageState extends State<EditProfilePage> {
 
   // List of items in our dropdown menu
-  TextEditingController classname = TextEditingController();
+  TextEditingController monthname = TextEditingController();
   TextEditingController fees = TextEditingController();
 
 
 
-  var c_name;
+  var m_name;
   var fee;
 
   bool showPassword = false;
@@ -69,7 +69,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             children: [
 
               Text(
-                "Add Fees ClassWise",
+                "Add Fees Monthwise",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               ),
 
@@ -78,10 +78,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 height: 20,
               ),
               TextFormField(
-                controller: classname,
+                controller: monthname,
                 decoration: InputDecoration(
 
-                  labelText: "Class_Name",
+                  labelText: "Month_Name",
                   filled: false,
 
                 ),
@@ -141,12 +141,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   RaisedButton(
                     onPressed: () {
-                      c_name=classname.text;
+                      m_name=monthname.text;
 
                       fee=fees.text;
 
 
-                      FirebaseFirestore.instance.collection('feesdb').add({'ClassName':'$c_name',
+                      FirebaseFirestore.instance.collection('feesdb').add({'ClassName':'$m_name',
                         'fees':'$fee',
                    });
                       showDialog(
