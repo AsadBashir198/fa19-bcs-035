@@ -1,3 +1,5 @@
+import 'package:fees_management_app/main.dart';
+import 'package:fees_management_app/teachers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
@@ -14,7 +16,7 @@ class m_homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Job Finder App',
+      title: 'Fees Management App',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
@@ -38,10 +40,20 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
 
         appBar: AppBar(
-leading: Icon(Icons.arrow_back,
-                                    ),
+          leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.green,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  MyApp()),
+                );
+              }
+          ),
           title: Text("Fees Management App"),
-
+          backgroundColor: Colors.blueGrey,
           actionsIconTheme: IconThemeData(size: 32,),
 
         ),
@@ -59,7 +71,7 @@ leading: Icon(Icons.arrow_back,
             children: [
               GestureDetector(
                 onTap: (){
-
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>teacher()));
                 },
 
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),
