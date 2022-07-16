@@ -1,4 +1,5 @@
 import 'package:fees_management_app/main.dart';
+import 'package:fees_management_app/student_detail.dart';
 import 'package:fees_management_app/teachers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -137,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>student()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                     color:Colors.blueGrey ),

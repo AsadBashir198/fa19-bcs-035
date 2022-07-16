@@ -82,7 +82,7 @@ class _s_signupState extends State<s_signup> {
                               .then((result) {
                             if (result == null) {
                               Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) => s_detail()));
+                                  MaterialPageRoute(builder: (context) => student()));
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
                                 content: Text(

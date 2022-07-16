@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'm_homepage.dart';
 
 
-class teacher extends StatelessWidget {
+class classes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Setting UI",
+      title: "Fees App",
       home: EditProfilePage(),
     );
   }
@@ -36,23 +36,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
   TextEditingController Contact = TextEditingController();
   TextEditingController address = TextEditingController();
   TextEditingController qualification = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController subject = TextEditingController();
-  TextEditingController clas = TextEditingController();
 
-  var nam;
+
+  var com;
   var con;
   var addr;
   var qual;
-  var emai;
-  var subj;
-  var cla;
-
   bool showPassword = false;
-
-
-
-
 
 
   @override
@@ -137,36 +127,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
 
               ),
-              TextFormField(
-                controller: email,
-                decoration: InputDecoration(
 
-                  labelText: "Email",
-                  filled: false,
-
-                ),
-
-              ),
-              TextFormField(
-                controller: subject,
-                decoration: InputDecoration(
-
-                  labelText: "Subject",
-                  filled: false,
-
-                ),
-
-              ),
-              TextFormField(
-                controller: clas,
-                decoration: InputDecoration(
-
-                  labelText: "Class",
-                  filled: false,
-
-                ),
-
-              ),
 
 
 
@@ -208,15 +169,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   RaisedButton(
                     onPressed: () {
-                      nam=name.text;
+                      com=name.text;
 
                       con=Contact.text;
                       addr=address.text;
                       qual=qualification.text;
 
-                      FirebaseFirestore.instance.collection('feesdb').add({'Name':'$nam',
-                        'contact':'$con','address':'$addr','qualification':'$qual','Email':'$emai',
-                        'Subject':'$subj','Class':'$clas',
+                      FirebaseFirestore.instance.collection('feesdb').add({'company':'$com',
+                        'contact':'$con','address':'$addr','qualification':'$qual',
                    });
                       showDialog(
                           context: context,

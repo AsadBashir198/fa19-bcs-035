@@ -85,7 +85,7 @@ class _s_loginState extends State<s_login> {
                             if (result == null) {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => s_detail()),
+                                MaterialPageRoute(builder: (context) => student()),
                               );
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
