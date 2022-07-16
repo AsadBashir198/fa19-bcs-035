@@ -1,5 +1,7 @@
+import 'package:fees_management_app/classes.dart';
 import 'package:fees_management_app/main.dart';
 import 'package:fees_management_app/student_detail.dart';
+import 'package:fees_management_app/subject.dart';
 import 'package:fees_management_app/teachers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -82,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.search_rounded,size: 50,color: Colors.green,),
+                      Icon(Icons.person,size: 50,color: Colors.green,),
                       Text("Add Teacher",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
@@ -90,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>classes()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                     color:Colors.blueGrey ),
@@ -98,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.add_to_photos_rounded,size: 50,color: Colors.green,),
+                      Icon(Icons.meeting_room_sharp,size: 50,color: Colors.green,),
                       Text("Add Classes",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
@@ -106,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>subject()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                     color:Colors.blueGrey ),
@@ -114,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.account_box_rounded,size: 50,color: Colors.green,),
+                      Icon(Icons.book_outlined,size: 50,color: Colors.green,),
                       Text("Add Subjects",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
@@ -130,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.person,size: 50,color: Colors.green,),
+                      Icon(Icons.payment,size: 50,color: Colors.green,),
                       Text("Fees",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
@@ -162,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.person,size: 50,color: Colors.green,),
+                      Icon(Icons.contact_phone,size: 50,color: Colors.green,),
                       Text("Teachers Contacts",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
@@ -178,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.person,size: 50,color: Colors.green,),
+                      Icon(Icons.contact_phone_rounded,size: 50,color: Colors.green,),
                       Text("Students Contacts",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),

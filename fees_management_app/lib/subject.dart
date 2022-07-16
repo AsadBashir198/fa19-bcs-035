@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'm_homepage.dart';
 
 
-class classes extends StatelessWidget {
+class subject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,13 +24,13 @@ class EditProfilePage extends StatefulWidget {
 class _EditProfilePageState extends State<EditProfilePage> {
 
   // List of items in our dropdown menu
-  TextEditingController classname = TextEditingController();
-  TextEditingController roomno = TextEditingController();
+  TextEditingController subjectname = TextEditingController();
+  TextEditingController clas = TextEditingController();
 
 
 
-  var c_name;
-  var r_no;
+  var s_name;
+  var cla;
 
   bool showPassword = false;
 
@@ -68,7 +68,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             children: [
 
               Text(
-                "Add Class",
+                "Add Subject",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               ),
 
@@ -77,10 +77,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 height: 20,
               ),
               TextFormField(
-                controller: classname,
+                controller: subjectname,
                 decoration: InputDecoration(
 
-                  labelText: "Class_Name",
+                  labelText: "Subject_Name",
                   filled: false,
 
                 ),
@@ -88,10 +88,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
 
               TextFormField(
-                controller: roomno,
+                controller: clas,
                 decoration: InputDecoration(
 
-                  labelText: "Room_No",
+                  labelText: "Class",
                   filled: false,
 
                 ),
@@ -140,19 +140,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   RaisedButton(
                     onPressed: () {
-                      c_name=classname.text;
+                      s_name=subjectname.text;
 
-                      r_no=roomno.text;
+                      cla=clas.text;
 
 
-                      FirebaseFirestore.instance.collection('feesdb').add({'ClassName':'$c_name',
-                        'Room No':'$r_no',
+                      FirebaseFirestore.instance.collection('feesdb').add({'ClassName':'$s_name',
+                        'Room No':'$cla',
                    });
                       showDialog(
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: Text("Class Added"),
+                              title: Text("Subject Added"),
                               actions: <Widget>[
                                 new FlatButton(
                                   child: new Text('Ok'),
@@ -170,7 +170,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     child: Text(
-                      "Add Class",
+                      "Add Subject",
                       style: TextStyle(
                           fontSize: 14,
                           letterSpacing: 0.5,
