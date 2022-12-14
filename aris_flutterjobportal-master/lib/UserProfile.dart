@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -29,7 +31,7 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-
+File pickedImage ;
   void imagePickerOption() {
     Get.bottomSheet(
       SingleChildScrollView(
@@ -56,14 +58,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
-
+                      pickImage(ImageSource.camera);
                     },
                     icon: const Icon(Icons.camera),
                     label: const Text("CAMERA"),
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
-
+                      pickImage(ImageSource.gallery);
                     },
                     icon: const Icon(Icons.image),
                     label: const Text("GALLERY"),
@@ -86,7 +88,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
     );
   }
+  pickImage(ImageSource imageType) async {
+    try {
+      final photo = await ImagePicker().pickImage(source: imageType);
+      if (photo == null) return;
+      final tempImage = File(photo.path);
+      setState(() {
+        pickedImage = tempImage;
+      });
 
+      Get.back();
+    } catch (error) {
+      debugPrint(error.toString());
+    }
+  }
 
 
 
@@ -152,7 +167,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ),
                   ),
                   child: ClipOval(
-                    child: Image.network(
+                    child: pickedImage!=null ? Image.file(pickedImage!,width: 170,
+                      height: 170,
+                      fit: BoxFit.cover,):
+                    Image.network(
                       'https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
                       width: 170,
                       height: 170,
@@ -164,7 +182,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   bottom: 0,
                   right: 5,
                   child: IconButton(
-                    onPressed: (){},
+                    onPressed: imagePickerOption,
                     icon: const Icon(
                       Icons.add_a_photo_outlined,
                       color: Colors.blue,
@@ -181,7 +199,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton.icon(
-                onPressed: (){},
+                onPressed: imagePickerOption,
                 icon: const Icon(Icons.add_a_photo_sharp),
                 label: const Text('UPLOAD IMAGE')),
           )
