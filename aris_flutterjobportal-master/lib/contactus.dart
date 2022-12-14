@@ -11,12 +11,12 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(backgroundColor: Colors.black54,
+      home: Scaffold( backgroundColor: const Color(0xFF031047),
         body: SafeArea(child:
         Column(
           mainAxisAlignment:  MainAxisAlignment.center,
           children: [
-            CircleAvatar(backgroundColor: Colors.blueGrey,
+            CircleAvatar(backgroundColor: const Color(0xFF4BA5A5),
               child: Icon(Icons.person,size: 90),
 
 
@@ -57,7 +57,7 @@ class ContactUs extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical: 30,horizontal: 40),
               child: ListTile(
                   leading: Icon(Icons.call),
-                  iconColor: Colors.purple,
+                  iconColor: const Color(0xFF4BA5A5),
                   textColor: Colors.black,
                   title:   Text("03099932032")
               ),
@@ -68,7 +68,7 @@ class ContactUs extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical:0,horizontal: 40),
               child:  ListTile(
                   leading: Icon(Icons.alternate_email_outlined),
-                  iconColor: Colors.purple,
+                  iconColor: const Color(0xFF4BA5A5),
                   textColor: Colors.black,
                   title:   Text("asadbashir19832@gmail.com")
               ),
@@ -80,7 +80,7 @@ class ContactUs extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical:28,horizontal: 40),
               child: ListTile(
                   leading: Icon(Icons.home_filled),
-                  iconColor: Colors.purple,
+                  iconColor:const Color(0xFF4BA5A5),
                   textColor: Colors.black,
                   title:   Text("Vehari")
               ),

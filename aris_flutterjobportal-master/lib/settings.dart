@@ -11,15 +11,16 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 1,
+        backgroundColor: const Color(0xFF031047),
+        elevation: 5,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
+
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.green,
+            color: Colors.white,
           ),
         ),
       ),
@@ -29,7 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             Text(
               "Settings",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
             ),
             SizedBox(
               height: 40,
@@ -38,7 +39,7 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 Icon(
                   Icons.person,
-                  color: Colors.green,
+                    color: const Color(0xFF4BA5A5),
                 ),
                 SizedBox(
                   width: 8,
@@ -68,7 +69,7 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 Icon(
                   Icons.volume_up_outlined,
-                  color: Colors.green,
+                    color: const Color(0xFF4BA5A5),
                 ),
                 SizedBox(
                   width: 8,
@@ -88,7 +89,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             buildNotificationOptionRow("New for you", true),
             buildNotificationOptionRow("Account activity", true),
-            buildNotificationOptionRow("Opportunity", false),
+            buildNotificationOptionRow("Opportunity", true),
             SizedBox(
               height: 50,
             ),
@@ -96,7 +97,7 @@ class _SettingsPageState extends State<SettingsPage> {
               child: OutlineButton(
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(10)),
                 onPressed: () {},
                 child: Text("SIGN OUT",
                     style: TextStyle(
