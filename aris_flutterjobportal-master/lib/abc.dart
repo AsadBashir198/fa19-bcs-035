@@ -18,6 +18,7 @@ class _abcState extends State<abc> {
     return MaterialApp(
 debugShowCheckedModeBanner: false,
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
 
         decoration: BoxDecoration(

@@ -24,14 +24,13 @@ class Resume extends StatelessWidget {
 }
 
 class EditProfilePage extends StatefulWidget {
-
   @override
-
   _EditProfilePageState createState() => _EditProfilePageState();
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-File pickedImage ;
+  File pickedImage;
+
   void imagePickerOption() {
     Get.bottomSheet(
       SingleChildScrollView(
@@ -88,6 +87,7 @@ File pickedImage ;
       ),
     );
   }
+
   pickImage(ImageSource imageType) async {
     try {
       final photo = await ImagePicker().pickImage(source: imageType);
@@ -103,8 +103,6 @@ File pickedImage ;
     }
   }
 
-
-
   TextEditingController names = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -112,9 +110,8 @@ File pickedImage ;
   TextEditingController phone = TextEditingController();
   TextEditingController degree = TextEditingController();
   TextEditingController institute = TextEditingController();
-  TextEditingController male= TextEditingController();
+  TextEditingController male = TextEditingController();
   TextEditingController dateofbirth = TextEditingController();
-
 
   var name;
   var e_mail;
@@ -126,11 +123,6 @@ File pickedImage ;
   var mal;
   var dob;
 
-
-
-
-
-
   bool showPassword = false;
   String dropdownvalue = 'Male';
 
@@ -139,9 +131,9 @@ File pickedImage ;
     'Male',
     'Female',
     'Other',
-
   ];
   DateTime _dateTime;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,11 +141,10 @@ File pickedImage ;
         centerTitle: true,
         title: const Text('user profile'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: ListView(
         children: [
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           Align(
             alignment: Alignment.center,
@@ -161,31 +152,35 @@ File pickedImage ;
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.indigo, width: 5),
+                    border: Border.all(color: Colors.indigo, width: 6),
                     borderRadius: const BorderRadius.all(
                       Radius.circular(100),
                     ),
                   ),
                   child: ClipOval(
-                    child: pickedImage!=null ? Image.file(pickedImage!,width: 170,
-                      height: 170,
-                      fit: BoxFit.cover,):
-                    Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
-                      width: 170,
-                      height: 170,
-                      fit: BoxFit.cover,
-                    ),
+                    child: pickedImage != null
+                        ? Image.file(
+                            pickedImage,
+                            width: 120,
+                            height: 120,
+                            fit: BoxFit.cover,
+                          )
+                        : Image.network(
+                            'https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
+                            width: 120,
+                            height: 120,
+                            fit: BoxFit.cover,
+                          ),
                   ),
                 ),
                 Positioned(
                   bottom: 0,
-                  right: 5,
+                  right: 0,
                   child: IconButton(
                     onPressed: imagePickerOption,
                     icon: const Icon(
-                      Icons.add_a_photo_outlined,
-                      color: Colors.blue,
+                      Icons.add_a_photo,
+                      color: Colors.lightBlue,
                       size: 30,
                     ),
                   ),
@@ -194,20 +189,204 @@ File pickedImage ;
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 5,
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(4.0),
             child: ElevatedButton.icon(
                 onPressed: imagePickerOption,
                 icon: const Icon(Icons.add_a_photo_sharp),
                 label: const Text('UPLOAD IMAGE')),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+
+          TextField(
+            controller: names,
+            decoration: InputDecoration(
+              labelText: "Full Name",
+              filled: false,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+            controller: email,
+            decoration: InputDecoration(
+              labelText: "E-Mail",
+              filled: false,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            controller: location,
+            decoration: InputDecoration(
+              labelText: "Address",
+              filled: false,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+            controller: phone,
+            decoration: InputDecoration(
+              labelText: "Phone No",
+              filled: false,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+            controller: degree,
+            decoration: InputDecoration(
+              labelText: "Degree",
+              filled: false,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+            controller: institute,
+            decoration: InputDecoration(
+              labelText: "Institute",
+              filled: false,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+            controller: institute,
+            decoration: InputDecoration(
+              labelText: "company name",
+              filled: false,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+            controller: institute,
+            decoration: InputDecoration(
+              labelText: "Experience",
+              filled: false,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          DropdownButtonFormField(
+            // Initial Value
+            value: dropdownvalue,
+
+            // Down Arrow Icon
+            icon: const Icon(Icons.keyboard_arrow_down),
+
+            // Array list of items
+            items: gender.map((String items) {
+              return DropdownMenuItem(
+                value: items,
+                child: Text(items),
+              );
+            }).toList(),
+            // After selecting the desired option,it will
+            // change button value to selected value
+            onChanged: (String newValue) {
+              setState(() {
+                dropdownvalue = newValue;
+              });
+            },
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextField(
+            controller: dateofbirth,
+            decoration: InputDecoration(
+              labelText: "Date of Birth",
+              filled: false,
+            ),
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              OutlineButton(
+                padding: EdgeInsets.symmetric(horizontal: 50),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  Homepage()),
+                  );
+
+                },
+                child: Text("CANCEL",
+                    style: TextStyle(
+                        fontSize: 14,
+                        letterSpacing: 2.2,
+                        color: Colors.black)),
+
+              ),
+              RaisedButton(
+                onPressed: () {
+                  name=names.text;
+                  e_mail=email.text;
+                  ph=phone.text;
+                  deg=degree.text;
+                  ins=institute.text;
+                  dob=dateofbirth.text;
+                  FirebaseFirestore.instance.collection('userprofile').add({'name':'$name','e_mail':'$e_mail','ph':'$ph','deg':'$deg','ins':'$ins','dob':'$dob'});
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("Saved"),
+                          actions: <Widget>[
+                            new FlatButton(
+                              child: new Text('Ok'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            )
+                          ],
+                        );
+                      }
+                  );
+                },
+                color: const Color(0xFF4BA5A5),
+                padding: EdgeInsets.symmetric(horizontal: 60),
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  "SAVE",
+                  style: TextStyle(
+                      fontSize: 14,
+                      letterSpacing: 2.2,
+                      color: Colors.white),
+                ),
+
+              )
+
+            ],
           )
         ],
+
       ),
     );
 
-    /*return Scaffold(
+   /* return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF031047),
         elevation: 1,
@@ -288,112 +467,7 @@ File pickedImage ;
                   ],
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
-              TextField(
-                controller: names,
-                decoration: InputDecoration(
 
-                    labelText: "Full Name",
-                    filled: false,
-
-                ),
-
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                controller: email,
-                decoration: InputDecoration(
-
-                  labelText: "E-Mail",
-                  filled: false,
-
-                ),
-
-              ),
-              SizedBox(
-                height: 10,
-              ),
-
-
-              TextFormField(
-                controller: location,
-                decoration: InputDecoration(
-
-                  labelText: "Address",
-                  filled: false,
-
-                ),
-
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                controller: phone,
-                decoration: InputDecoration(
-
-                  labelText: "Phone No",
-                  filled: false,
-
-                ),
-
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                controller: degree,
-                decoration: InputDecoration(
-
-                  labelText: "Degree",
-                  filled: false,
-
-                ),
-
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                controller: institute,
-                decoration: InputDecoration(
-
-                  labelText: "Institute",
-                  filled: false,
-                ),
-
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                controller: institute,
-                decoration: InputDecoration(
-
-                  labelText: "company name",
-                  filled: false,
-                ),
-
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                controller: institute,
-                decoration: InputDecoration(
-
-                  labelText: "Experience",
-                  filled: false,
-                ),
-
-              ),
-              SizedBox(
-                height: 10,
-              ),
               DropdownButtonFormField(
 
 
@@ -467,68 +541,18 @@ File pickedImage ;
 
 
 
-              SizedBox(
-                height: 35,
-              ),
+
 
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlineButton(
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) =>  Homepage()),
-                      );
 
-                    },
-                    child: Text("CANCEL",
-                        style: TextStyle(
-                            fontSize: 14,
-                            letterSpacing: 2.2,
-                            color: Colors.black)),
-                  ),
+                children: [
+
+
                   RaisedButton(
-                    onPressed: () {
-                      name=names.text;
-                      e_mail=email.text;
-                      ph=phone.text;
-                      deg=degree.text;
-                      ins=institute.text;
-                      dob=dateofbirth.text;
-                      FirebaseFirestore.instance.collection('userprofile').add({'name':'$name','e_mail':'$e_mail','ph':'$ph','deg':'$deg','ins':'$ins','dob':'$dob'});
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: Text("Saved"),
-                              actions: <Widget>[
-                                new FlatButton(
-                                  child: new Text('Ok'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                )
-                              ],
-                            );
-                          }
-                          );
-                    },
-                      color: const Color(0xFF4BA5A5),
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Text(
-                      "SAVE",
-                      style: TextStyle(
-                          fontSize: 14,
-                          letterSpacing: 2.2,
-                          color: Colors.white),
-                    ),
+
+
+
+
                   )
                 ],
               )
@@ -549,16 +573,16 @@ File pickedImage ;
         decoration: InputDecoration(
             suffixIcon: isPasswordTextField
                 ? IconButton(
-              onPressed: () {
-                setState(() {
-                  showPassword = !showPassword;
-                });
-              },
-              icon: Icon(
-                Icons.remove_red_eye,
-                color: Colors.grey,
-              ),
-            )
+                    onPressed: () {
+                      setState(() {
+                        showPassword = !showPassword;
+                      });
+                    },
+                    icon: Icon(
+                      Icons.remove_red_eye,
+                      color: Colors.grey,
+                    ),
+                  )
                 : null,
             contentPadding: EdgeInsets.only(bottom: 3),
             labelText: labelText,
