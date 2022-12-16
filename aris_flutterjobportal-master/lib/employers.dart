@@ -83,14 +83,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 1,
+      appBar: new AppBar(
+        title: new Text('Post Job'),
+        centerTitle: true,
+        backgroundColor: const Color(0xFF031047),
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.green,
-          ),
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
             onPressed: () {
               Navigator.push(
                 context,
@@ -98,10 +99,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
               );
             }
         ),
-
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.share),
+            onPressed: () {
+            },
+          ),
+        ],
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 16, top: 25, right: 16),
+        padding: EdgeInsets.only(left: 16, top: 10, right: 16,bottom:20,),
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -114,12 +121,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 "Want to hire? Tell us about your organization",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               ),
-              SizedBox(
-                height: 15,
-              ),
+
 
               SizedBox(
-                height: 35,
+                height: 10,
               ),
               TextFormField(
                 controller: company,

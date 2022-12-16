@@ -22,7 +22,9 @@ class Homepage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Job Finder App',
       theme: ThemeData(
+
           appBarTheme: AppBarTheme(
+            centerTitle: true,
             color: const Color(0xFF031047),
           )),
       home: MyHomePage(),
@@ -47,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
 
           title: Text("CU jobs"),
+          centerTitle: true,
 
           actionsIconTheme: IconThemeData(size: 32,),
 
@@ -197,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.person,size: 70,color: Colors.white,),
-                      Text("Applicants",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("Help & Guide",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
                 ),
@@ -213,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.person,size: 70,color: Colors.white,),
-                      Text("Applicants",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("Notifications",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
                 ),

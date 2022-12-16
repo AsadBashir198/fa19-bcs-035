@@ -5,6 +5,8 @@ import 'package:firebase_database/firebase_database.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
+import 'home_page.dart';
+
 
 
 class applicants extends StatefulWidget {
@@ -30,7 +32,27 @@ class _applicantsState extends State<applicants> {
     return Scaffold(
       appBar: new AppBar(
         title: new Text('Applicants'),
+        centerTitle: true,
         backgroundColor: const Color(0xFF031047),
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  Homepage()),
+              );
+            }
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+            },
+          ),
+        ],
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('applyform').snapshots(),
