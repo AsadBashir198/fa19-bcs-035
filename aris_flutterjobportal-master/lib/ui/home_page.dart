@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               GestureDetector(
                 onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>alljobs()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>alljobs()));
                 },
 
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),
@@ -159,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>employer()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>employer()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),
@@ -175,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Resume()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Resume()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5),),
@@ -191,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>applicants()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),
@@ -207,7 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>applicants()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),
@@ -223,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>applicants()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),

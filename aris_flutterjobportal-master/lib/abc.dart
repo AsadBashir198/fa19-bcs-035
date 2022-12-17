@@ -20,11 +20,8 @@ debugShowCheckedModeBanner: false,
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
+          color: Color(0xFF031047),
 
-        decoration: BoxDecoration(
-
-        image: DecorationImage(
-        image: AssetImage('assets/w.jpg'), fit: BoxFit.none),),
           child: Padding(
               padding: const EdgeInsets.only(top:170),
               child: ListView(
@@ -72,12 +69,8 @@ debugShowCheckedModeBanner: false,
                       ),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      //forgot password screen
-                    },
-                    child: const Text('Forgot Password',),
-                  ),
+                  SizedBox(height: 20,),
+
                   Container(
                       height: 50,
                       padding: const EdgeInsets.fromLTRB(10, 0, 10,0),
@@ -108,9 +101,20 @@ debugShowCheckedModeBanner: false,
                         ),
                       )
                   ),
+                  TextButton(
+                    onPressed: () {
+                      //forgot password screen
+                    },
+                    child: const Text('Forgot Password',),
+                  ),
                   Row(
                     children: <Widget>[
-                      const Text('Does not have account?'),
+                      SizedBox(
+                         height: 10,
+                      ),
+                      const Text('Does not have account?',
+                          style: TextStyle(color: Colors.white) ),
+                      SizedBox(width: 70,),
                       TextButton(
                         child: const Text(
                           'Sign up',
@@ -127,6 +131,7 @@ debugShowCheckedModeBanner: false,
                     ],
                     mainAxisAlignment: MainAxisAlignment.center,
                   ),
+
                 ],
               )),
         ),

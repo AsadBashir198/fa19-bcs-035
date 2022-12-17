@@ -18,11 +18,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return MaterialApp(
 debugShowCheckedModeBanner: false,
       home:  Scaffold(
-
+backgroundColor: Colors.white,
         body:  Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/w.jpg'), fit: BoxFit.cover),),
+          color: Color(0xFF031047),
+
 
           child: Padding(
               padding: const EdgeInsets.only(top:170),
@@ -85,7 +84,7 @@ debugShowCheckedModeBanner: false,
                               .signUp(email: nameController.text, password: passwordController.text)
                               .then((result) {
                             if (result == null) {
-                              Navigator.pushReplacement(context,
+                              Navigator.push(context,
                                   MaterialPageRoute(builder: (context) => Homepage()));
                             } else {
                               Scaffold.of(context).showSnackBar(SnackBar(
@@ -103,16 +102,19 @@ debugShowCheckedModeBanner: false,
                         ),
                       ),
                   ),
+                  SizedBox(height: 20,),
+
                   Row(
                     children: <Widget>[
-                      const Text('Does not have account?'),
+                      SizedBox(width: 200,),
+
                       TextButton(
                         child: const Text(
                           'Sign in',
                           style: TextStyle(fontSize: 20),
                         ),
                         onPressed: () {
-                           Navigator.pushReplacement(context,
+                           Navigator.push(context,
                                                            MaterialPageRoute(builder: (context) => abc()));
                         },
                       )
