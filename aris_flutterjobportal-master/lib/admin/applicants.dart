@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_job_portal/admin/HomeAdmin.dart';
 
-import 'home_page.dart';
+import '../ui/home_page.dart';
 
 
 
@@ -42,7 +43,7 @@ class _applicantsState extends State<applicants> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  Homepage()),
+                MaterialPageRoute(builder: (context) =>  homeadmin(),maintainState: true),
               );
             }
         ),

@@ -6,13 +6,13 @@ import 'package:flutter_job_portal/employers.dart';
 import 'package:flutter_job_portal/settings.dart';
 import 'package:flutter_job_portal/ui/alljob.dart';
 import 'package:flutter_job_portal/admin/applicants.dart';
-import '../contactus.dart';
+import '../../contactus.dart';
 
 void main()
 {
-  runApp(Homepage());
+  runApp(homeadmin());
 }
-class Homepage extends StatelessWidget {
+class homeadmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,11 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("CU jobs"),
-          centerTitle: true,
-          actionsIconTheme: IconThemeData(size: 32,),
-        ),
+      appBar: AppBar(
+        title: Text("CU jobs"),
+        centerTitle: true,
+        actionsIconTheme: IconThemeData(size: 32,),
+      ),
       drawer: Drawer(
         backgroundColor: const Color(0xFF031047),
 
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 // Update the state of the app
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  Homepage()),
+                  MaterialPageRoute(builder: (context) =>  homeadmin()),
                 );
               },
             ),
@@ -188,8 +188,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.person,size: 70,color: Colors.white,),
-                      Text("Help & Guide",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Icon(Icons.notifications_active_rounded,size: 50,color: Colors.white,),
+                      Text("Notifications",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
                 ),
@@ -204,8 +204,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.notifications_active_rounded,size: 50,color: Colors.white,),
-                      Text("Notifications",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Icon(Icons.person,size: 70,color: Colors.white,),
+                      Text("Applicants",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
                 ),

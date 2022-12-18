@@ -67,13 +67,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 1,
+      appBar: new AppBar(
+        title: new Text('Apply '),
+        centerTitle: true,
+        backgroundColor: const Color(0xFF031047),
         leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
-              color: Colors.green,
+              color: Colors.white,
             ),
             onPressed: () {
               Navigator.push(
@@ -82,11 +83,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
               );
             }
         ),
-
       ),
       body: Container(
 
-        padding: EdgeInsets.only(left: 16, top: 25, right: 16),
+        padding: EdgeInsets.only(left: 16, top: 10, right: 16),
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -99,12 +99,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 "Apply For Job",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               ),
-              SizedBox(
-                height: 15,
-              ),
+
 
               SizedBox(
-                height: 30,
+                height: 10,
               ),
               TextField(
                 controller: names,

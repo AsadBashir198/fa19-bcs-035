@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_job_portal/abc.dart';
 import 'package:get/get.dart';
 
+import 'admin/login-admin.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,7 +60,7 @@ class MyApp extends StatelessWidget {
                       shadowColor: Colors.lightBlue,
                     ),
                     onPressed: () => Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) =>abc())),
+                        .push(MaterialPageRoute(builder: (context) =>loginAd())),
                   ),
                 ),
                 SizedBox(height: 20,),

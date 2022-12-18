@@ -74,7 +74,6 @@ class _alljobsState extends State<alljobs> {
                 child: Center(
                     child: Column(
                       children: [
-
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -84,7 +83,6 @@ class _alljobsState extends State<alljobs> {
                               SizedBox(width: 30.0),
                               Text(snapshot.data.docs[index]['company']),
                             ]
-
                         ),
                         SizedBox(height: 20.0),
                         Row(
