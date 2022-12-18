@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_job_portal/UserProfile.dart';
-import 'package:flutter_job_portal/employers.dart';
-import 'package:flutter_job_portal/settings.dart';
-import 'package:flutter_job_portal/ui/alljob.dart';
+import 'package:flutter_job_portal/admin/notifyad.dart';
+import 'package:flutter_job_portal/admin/resumereceive.dart';
+import 'package:flutter_job_portal/jobseeker/UserProfile.dart';
+import 'package:flutter_job_portal/employer/employers.dart';
+import 'package:flutter_job_portal/ui/settings.dart';
+import 'package:flutter_job_portal/jobseeker/alljob.dart';
 import 'package:flutter_job_portal/admin/applicants.dart';
-import '../../contactus.dart';
+import '../ui/contactus.dart';
 
 void main()
 {
@@ -164,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Resume()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>resumead()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5),),
@@ -180,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>notificationad()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),

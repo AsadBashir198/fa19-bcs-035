@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_job_portal/abc.dart';
-import 'package:flutter_job_portal/autication.dart';
-import 'package:flutter_job_portal/ui/home_page.dart';
+import 'package:flutter_job_portal/jobseeker/abc.dart';
+import 'package:flutter_job_portal/firebase/autication.dart';
+import 'package:flutter_job_portal/jobseeker/home_page.dart';
 
 class MyStatefulWidget extends StatefulWidget {
 

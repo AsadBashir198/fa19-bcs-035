@@ -5,34 +5,40 @@ import 'package:firebase_database/firebase_database.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_job_portal/admin/HomeAdmin.dart';
-
-import '../jobseeker/home_page.dart';
-
+import 'package:flutter_job_portal/jobseeker/home_page.dart';
 
 
-class applicants extends StatefulWidget {
+
+
+
+class alljobsad extends StatefulWidget {
 
 
   @override
-  State<applicants> createState() => _applicantsState();
+  State<alljobsad> createState() => _alljobsadState();
 }
 
-class _applicantsState extends State<applicants> {
+class _alljobsadState extends State<alljobsad> {
 
 
-  TextEditingController names = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController phone = TextEditingController();
+  TextEditingController company = TextEditingController();
 
-  var name;
-  var e_mail;
-  var ph;
+  var co;
+  TextEditingController vacancies = TextEditingController();
+
+  var vac;
+  TextEditingController contact = TextEditingController();
+
+  var con;
+  TextEditingController qualification = TextEditingController();
+
+  var qual;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: new Text('Applicants'),
+        title: new Text('All Jobs'),
         centerTitle: true,
         backgroundColor: const Color(0xFF031047),
         leading: IconButton(
@@ -43,7 +49,7 @@ class _applicantsState extends State<applicants> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  homeadmin(),),
+                MaterialPageRoute(builder: (context) =>  homeadmin()),
               );
             }
         ),
@@ -56,7 +62,7 @@ class _applicantsState extends State<applicants> {
         ],
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('applyform').snapshots(),
+        stream: FirebaseFirestore.instance.collection('jobpost').snapshots(),
         builder: (context,AsyncSnapshot snapshot){
           if(!snapshot.hasData) return CircularProgressIndicator();
           return ListView.builder(
@@ -73,10 +79,22 @@ class _applicantsState extends State<applicants> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
 
-                            Text('Name:',
+                            Text('company:',
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                             SizedBox(width: 30.0),
-                            Text(snapshot.data.docs[index]['name']),
+                            Text(snapshot.data.docs[index]['company']),
+                          ]
+                      ),
+                      SizedBox(height: 20.0),
+                      Row(
+
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text('vacancies:',
+                              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                            SizedBox(width: 30.0),
+                            Text(snapshot.data.docs[index]['vacancies']),
+
                           ]
 
                       ),
@@ -85,54 +103,38 @@ class _applicantsState extends State<applicants> {
 
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text('email:',
-                              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 30.0),
-                            Text(snapshot.data.docs[index]['e_mail']),
 
-                          ]
-
-                      ),
-                      SizedBox(height: 20.0),
-                      Row(
-
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-
-                            Text('phone:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                            Text('contact:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                             SizedBox(width: 49.0),
-                            Text(snapshot.data.docs[index]['ph']),
+                            Text(snapshot.data.docs[index]['contact']),
                           ]
 
                       ),
                       SizedBox(height: 20.0),
-                      // Row(
-                      //
-                      //     mainAxisAlignment: MainAxisAlignment.start,
-                      //     children: [
-                      //
-                      //       Text('Last Date:',
-                      //         style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                      //       SizedBox(width: 49.0),
-                      //      Text(snapshot.data.docs[index]['lastdate']),
-                      //     ]
-                      //
-                      // ),
+                      Row(
+
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+
+                            Text('Qualification:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                            SizedBox(width: 25.0),
+                            Text(snapshot.data.docs[index]['qualification']),
+                          ]
+
+                      ),
 
 
 
 
                     ],
-                  ),
-
-
+                  )
                 ),
                 decoration: BoxDecoration(
-                    color: Colors.black12,
+                    color: Colors.black26,
                     borderRadius: BorderRadius.circular(15)
                 ),
 
-                height: 180.0,
+                height: 240.0,
               );
             },
 
@@ -144,4 +146,6 @@ class _applicantsState extends State<applicants> {
     );
   }
 }
+
+
 

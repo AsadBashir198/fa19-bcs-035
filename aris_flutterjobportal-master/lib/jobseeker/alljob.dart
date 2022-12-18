@@ -127,7 +127,7 @@ class _alljobsState extends State<alljobs> {
                                ElevatedButton(
                                  child: Text('Apply'),
                                  style: ElevatedButton.styleFrom(
-                                   primary: Colors.green,
+                                   primary:  Color(0xFF4BA5A5),
                                    onPrimary: Colors.white,
                                    shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(6))),
                                  ),
@@ -148,7 +148,7 @@ class _alljobsState extends State<alljobs> {
 
                 ),
                 decoration: BoxDecoration(
-                    color: Colors.black26,
+                    color: Colors.black12,
                     borderRadius: BorderRadius.circular(15)
                 ),
 

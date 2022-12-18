@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_job_portal/UserProfile.dart';
-import 'package:flutter_job_portal/employers.dart';
-import 'package:flutter_job_portal/settings.dart';
-import 'package:flutter_job_portal/ui/alljob.dart';
+import 'package:flutter_job_portal/jobseeker/UserProfile.dart';
+import 'package:flutter_job_portal/employer/employers.dart';
+import 'package:flutter_job_portal/ui/settings.dart';
+import 'package:flutter_job_portal/jobseeker/alljob.dart';
 import 'package:flutter_job_portal/admin/applicants.dart';
-import '../contactus.dart';
+import '../ui/contactus.dart';
 
 void main()
 {
@@ -43,6 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text("CU jobs"),
           centerTitle: true,
           actionsIconTheme: IconThemeData(size: 32,),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.notifications),
+              onPressed: () {
+              },
+            ),
+          ],
         ),
       drawer: Drawer(
         backgroundColor: const Color(0xFF031047),
@@ -146,22 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>employer()));
-                },
-                child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
-                  color: const Color(0xFF4BA5A5), ),
-                  margin: EdgeInsets.all( 30.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.add_to_photos_rounded,size: 50,color: Colors.white,),
-                      Text("Post Job",style: TextStyle(color:Colors.white,fontSize: 20 ),)
-                    ],
-                  ),
-                ),
-              ),
+
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Resume()));
@@ -178,22 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
-                },
-                child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
-                  color: const Color(0xFF4BA5A5), ),
-                  margin: EdgeInsets.all( 30.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.person,size: 70,color: Colors.white,),
-                      Text("Help & Guide",style: TextStyle(color:Colors.white,fontSize: 20 ),)
-                    ],
-                  ),
-                ),
-              ),
+
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
@@ -220,8 +197,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.person,size: 70,color: Colors.white,),
+                      Icon(Icons.announcement,size: 70,color: Colors.white,),
                       Text("Interviews",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
+                },
+                child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
+                  color: const Color(0xFF4BA5A5), ),
+                  margin: EdgeInsets.all( 30.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.help,size: 70,color: Colors.white,),
+                      Text("Help & Guide",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
                 ),

@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_job_portal/settings.dart';
-import 'package:flutter_job_portal/ui/home_page.dart';
+import 'package:flutter_job_portal/admin/HomeAdmin.dart';
+import 'package:flutter_job_portal/ui/settings.dart';
+import 'package:flutter_job_portal/jobseeker/home_page.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -95,7 +96,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  Homepage()),
+                MaterialPageRoute(builder: (context) =>  homeadmin()),
               );
             }
         ),
