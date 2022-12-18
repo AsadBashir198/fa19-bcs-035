@@ -38,6 +38,7 @@ dependencies:
   material_design_icons_flutter: ^4.0.5955
   image_picker: ^0.8.6
   get: ^4.6.5
+  file_picker:
 
 dev_dependencies:
   flutter_test:

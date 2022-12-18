@@ -215,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.person,size: 70,color: Colors.white,),
+                      Icon(Icons.notifications_active_rounded,size: 70,color: Colors.white,),
                       Text("Notifications",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
@@ -232,7 +232,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.person,size: 70,color: Colors.white,),
-                      Text("Applicants",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("Interviews",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
                 ),
