@@ -5,7 +5,7 @@ import 'package:firebase_database/firebase_database.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_job_portal/admin/HomeAdmin.dart';
-import 'package:flutter_job_portal/jobseeker/home_page.dart';
+
 
 
 
@@ -47,9 +47,9 @@ class _alljobsadState extends State<alljobsad> {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(
+              Navigator.pop(
                 context,
-                MaterialPageRoute(builder: (context) =>  homeadmin()),
+                MaterialPageRoute(builder: (context) =>homeadmin()),
               );
             }
         ),

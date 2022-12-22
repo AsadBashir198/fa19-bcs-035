@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  homeadmin()),
+                MaterialPageRoute(builder: (context) =>homeadmin()),
               );
             }
         ),
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return Container(
             height: 130,
             child: Card(
-//                color: Colors.blue,
+               color: Color(0xFF4BA5A5),
               elevation: 50,
               child: Row(
                 children: <Widget>[

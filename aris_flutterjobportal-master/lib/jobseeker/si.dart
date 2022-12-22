@@ -13,6 +13,29 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+
+
+  OutlineInputBorder myinputborder(){ //return type is OutlineInputBorder
+    return OutlineInputBorder( //Outline border type for TextFeild
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderSide: BorderSide(
+          color:Color(0xFF4BA5A5),
+          width: 4,
+        )
+
+    );
+  }
+
+  OutlineInputBorder myfocusborder(){
+    return OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderSide: BorderSide(
+          color:Colors.greenAccent,
+          width: 3,
+        )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,30 +69,38 @@ backgroundColor: Colors.white,
 
                         style: TextStyle(fontSize: 20,color:Colors.white),
                       )),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: TextField(
-                      controller: nameController,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(),
-                        labelText: 'User Name',
+                  Column(
+                    children: [
+                      TextField(
+                          controller: nameController,
+                          decoration: InputDecoration(
+                            filled: true, //<-- SEE HERE
+                            fillColor: Colors.white,
+                            labelText: "Username",
+                            prefixIcon: Icon(Icons.people,color: Color(0xFF4BA5A5),),
+                            border: myinputborder(),
+                            enabledBorder: myinputborder(),
+                            focusedBorder: myfocusborder(),
+                          )
                       ),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    child: TextField(
-                      obscureText: true,
-                      controller: passwordController,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(),
-                        labelText: 'Password',
+
+                      Container(height:20),
+
+                      TextField(
+                          obscureText: true,
+                          controller: passwordController,
+                          decoration: InputDecoration(
+                            filled: true, //<-- SEE HERE
+                            fillColor: Colors.white,
+                            prefixIcon: Icon(Icons.lock,color: Color(0xFF4BA5A5),),
+                            labelText: "Password",
+
+                            enabledBorder: myinputborder(),
+                            focusedBorder: myfocusborder(),
+                          )
                       ),
-                    ),
+
+                    ],
                   ),
                   SizedBox(
                     height: 20.0,

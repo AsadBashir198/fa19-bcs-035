@@ -9,6 +9,7 @@ import 'package:flutter_job_portal/ui/settings.dart';
 import 'package:flutter_job_portal/jobseeker/alljob.dart';
 import 'package:flutter_job_portal/admin/applicants.dart';
 import '../ui/contactus.dart';
+import 'alljobsad.dart';
 
 void main()
 {
@@ -26,18 +27,18 @@ class homeadmin extends StatelessWidget {
             centerTitle: true,
             color: const Color(0xFF031047),
           )),
-      home: MyHomePage(),
+      home: MyHomePageAd(),
     );
   }
 }
-class MyHomePage extends StatefulWidget {
+class MyHomePageAd extends StatefulWidget {
   @override
-  _MyHomePageState createState()
+  _MyHomePageAdState createState()
   {
-    return _MyHomePageState();
+    return _MyHomePageAdState();
   }
 }
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageAdState extends State<MyHomePageAd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>alljobs()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>alljobsad()));
                 },
 
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),

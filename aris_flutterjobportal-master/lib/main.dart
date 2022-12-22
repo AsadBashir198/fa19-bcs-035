@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
 
 
         return MaterialApp(
-
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData.light(),
@@ -45,8 +44,16 @@ class MyApp extends StatelessWidget {
             child:Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                CircleAvatar(
+                  radius: 150,
+                  child: CircleAvatar(
+                    radius: 130,
+                    foregroundImage: NetworkImage(
+                        "https://upload.wikimedia.org/wikipedia/commons/c/c0/COMSATS_new_logo.jpg"),
+                  ),
 
-                SizedBox(height: 20,),
+                ),
+                SizedBox(height: 50,),
                 Container(
                   child: ElevatedButton(
                     child: Text('Admin'),
@@ -71,24 +78,6 @@ class MyApp extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFF4BA5A5),
                          fixedSize: const Size(250,70),
-                      // side: BorderSide(color: Colors.yellow, width: 5),
-                      textStyle: const TextStyle(
-                          color: Colors.white, fontSize: 25, fontStyle: FontStyle.normal),
-                      shape: BeveledRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.elliptical(2,4))),
-                      shadowColor: Colors.lightBlue,
-                    ),
-                    onPressed: () => Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) =>abc())),
-                  ),
-                ),
-                SizedBox(height: 20,),
-                Container(
-                  child: ElevatedButton(
-                    child: Text('Employer'),
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF4BA5A5),
-                      fixedSize: const Size(250,70),
                       // side: BorderSide(color: Colors.yellow, width: 5),
                       textStyle: const TextStyle(
                           color: Colors.white, fontSize: 25, fontStyle: FontStyle.normal),
