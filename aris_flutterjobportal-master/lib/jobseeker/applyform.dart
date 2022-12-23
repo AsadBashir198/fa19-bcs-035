@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_job_portal/login.dart';
+import 'package:flutter_job_portal/filepick.dart';
 import 'package:flutter_job_portal/ui/settings.dart';
 import 'package:flutter_job_portal/jobseeker/home_page.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -15,19 +15,19 @@ class apply extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Apply Form",
-      home: EditProfilePage(),
+      home: ApplyformU(),
     );
   }
 }
 
-class EditProfilePage extends StatefulWidget {
+class ApplyformU extends StatefulWidget {
 
   @override
 
-  _EditProfilePageState createState() => _EditProfilePageState();
+  _ApplyformUState createState() => _ApplyformUState();
 }
 
-class _EditProfilePageState extends State<EditProfilePage> {
+class _ApplyformUState extends State<ApplyformU> {
   final sn=FirebaseFirestore.instance.collection('applyform').snapshots();
 
   TextEditingController names = TextEditingController();
@@ -252,6 +252,32 @@ class _EditProfilePageState extends State<EditProfilePage> {
               SizedBox(
                 height: 35,
               ),
+              ElevatedButton(
+                onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  filepicker()),
+                    );
+                },
+
+                child: Text(
+                  'Upload your Cv',
+                  style: TextStyle(color: Colors.black,fontSize: 18,),
+                ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(300, 40),
+                  elevation: 5,
+                  primary: Colors.transparent,
+                  shadowColor: Colors.transparent.withOpacity(0.1),
+                  side: BorderSide(
+                    width: 3,
+                    color: Color(0xFF4BA5A5),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -310,7 +336,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           letterSpacing: 2.2,
                           color: Colors.white),
                     ),
-                  )
+                  ),
+
                 ],
               )
             ],

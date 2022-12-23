@@ -38,7 +38,15 @@ dependencies:
   material_design_icons_flutter: ^4.0.5955
   image_picker: ^0.8.6
   get: ^4.6.5
-  file_picker:
+  file_picker: ^4.1.6
+  loading_indicator: ^3.0.2
+  dotted_border: ^2.0.0+1
+  iconsax: ^0.0.8
+  dio: ^4.0.0
+
+
+
+
 
 dev_dependencies:
   flutter_test:
