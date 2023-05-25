@@ -6,6 +6,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_job_portal/admin/HomeAdmin.dart';
 
+import 'searJobs.dart';
+
 
 
 
@@ -57,6 +59,10 @@ class _alljobsadState extends State<alljobsad> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>searAd()),
+              );
             },
           ),
         ],
@@ -130,8 +136,19 @@ class _alljobsadState extends State<alljobsad> {
                   )
                 ),
                 decoration: BoxDecoration(
-                    color: Colors.black26,
-                    borderRadius: BorderRadius.circular(15)
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15), //border corner radius
+                  boxShadow:[
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5), //color of shadow
+                      spreadRadius: 5, //spread radius
+                      blurRadius: 7, // blur radius
+                      offset: Offset(0, 2), // changes position of shadow
+                      //first paramerter of offset is left-right
+                      //second parameter is top to down
+                    ),
+                    //you can set more BoxShadow() here
+                  ],
                 ),
 
                 height: 240.0,

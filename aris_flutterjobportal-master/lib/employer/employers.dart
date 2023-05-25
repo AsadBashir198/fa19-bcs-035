@@ -424,7 +424,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
                     child: Text("CANCEL",
                         style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 12,
                             letterSpacing: 2.2,
                             color: Colors.black)),
                   ),
@@ -461,14 +461,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           });
                     },
                     color: Colors.green,
-                    padding: EdgeInsets.symmetric(horizontal: 50),
+                    padding: EdgeInsets.symmetric(horizontal: 45),
                     elevation: 2,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     child: Text(
                       "Post Job",
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           letterSpacing: 2.2,
                           color: Colors.white),
                     ),
@@ -479,6 +479,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           ),
         ),
       ),
+
     );
   }
 

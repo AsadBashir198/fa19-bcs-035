@@ -1,37 +1,58 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'HomeAdmin.dart';
 
+void main() => runApp(res());
 
-
-
-class resumead extends StatelessWidget {
-  // This widget is the root of your application.
+class res extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(color: Color(0xFF031047),),
-
-      ),
-      home: MyHomePage(),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.indigo[700],
+        ),
+        home: resumerec());
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class resumerec extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _resumerecState createState() => _resumerecState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _resumerecState extends State<resumerec> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    var card = Container(
+      height: 120,
+      child: Card(
+        elevation: 9,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+        ),
+        child: ListTile(
+          dense: false,
+
+          title: Text(
+            "For Post of Lecturer",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          subtitle: Text(
+            "Applicant: Mustafa Tahir",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+        ),
+      ),
+    );
+
+    return Scaffold(
       appBar: AppBar(
+        title: Text("Resumes"),
         centerTitle: true,
-        title: Text('Applicants Resumes'),
+        actionsIconTheme: IconThemeData(size: 32,),
+       backgroundColor: Color(0xFF031047),
         leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
@@ -40,80 +61,26 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>homeadmin()),
+                MaterialPageRoute(builder: (context) =>  homeadmin()),
               );
             }
         ),
       ),
-      body: new ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemBuilder: (context, i) {
-          return Container(
-            height: 130,
-            child: Card(
-               color: Color(0xFF4BA5A5),
-              elevation: 50,
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: GestureDetector(
-                      onTap: () {
-
-                      },
-                      child: Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                            color: Colors.tealAccent,
-                            image: DecorationImage(
-                                image: AssetImage('images/hacker.jpeg'),
-                                fit: BoxFit.cover),
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(75.0)),
-                            boxShadow: [
-                              BoxShadow(blurRadius: 7.0, color: Colors.black)
-                            ]),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      return showDialog<void>(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (BuildContext conext) {
-                          return AlertDialog(
-                            title: Text('Not in stock'),
-                            content:
-                            const Text('This item is no longer available'),
-                            actions: <Widget>[
-                              FlatButton(
-                                child: Text('Ok'),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                        padding: EdgeInsets.all(30.0),
-                        child: Chip(
-                          label: Text('Asad Bashir'),
-
-                          backgroundColor: Color(0xFF4BA5A5),
-                          elevation: 10,
-                          autofocus: true,
-                        )),
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              card,
+              card,
+              card,
+              card,
+              card,
+              card,
+            ],
+          ),
+        ),
       ),
     );
   }

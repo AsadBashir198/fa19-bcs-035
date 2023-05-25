@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_job_portal/admin/HomeAdmin.dart';
 
-import '../jobseeker/home_page.dart';
+import 'home_page.dart';
 
-void main() => runApp( adnotification());
+void main() => runApp( notif());
 
-class adnotification extends StatelessWidget {
+class notif extends StatelessWidget {
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class adnotification extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  homeadmin()),
+                  MaterialPageRoute(builder: (context) =>  Homepage()),
                 );
               }
           ),
@@ -43,14 +45,14 @@ class notification extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       children: <Widget>[
 
-        Card(child:ListTile( title: Text("Ahmad"),subtitle: Text("sent you a cv."), leading: CircleAvatar(backgroundImage: AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
+        Card(child:ListTile( title: Text("Ahmad"),subtitle: Text("sent you a schedule."), leading: CircleAvatar(backgroundImage: AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
         Card(child:ListTile( title: Text("Farhan"),subtitle: Text("sent you a message."), leading:  CircleAvatar(backgroundImage: AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
-        Card(child:ListTile( title: Text("Umer"),subtitle: Text("sent you a cv."), leading:  CircleAvatar(backgroundImage: AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
+        Card(child:ListTile( title: Text("Umer"),subtitle: Text("sent you a schedule."), leading:  CircleAvatar(backgroundImage: AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
         Card(child:ListTile(title: Text("farhad"), subtitle: Text("Send you a message."), leading: CircleAvatar(backgroundImage:AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
         Card(child:ListTile( title: Text("fakhar"),subtitle: Text("sent you Email."), leading:  CircleAvatar(backgroundImage:AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
         Card(child:ListTile( title: Text("Husnain"),subtitle: Text("sent you a message."), leading:  CircleAvatar(backgroundImage: AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
-        Card(child:ListTile( title: Text("Junaid"),subtitle: Text("posted a job."), leading:  CircleAvatar(backgroundImage:AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
-        Card(child:ListTile( title: Text("Ali"),subtitle: Text("sent you a cv."), leading:  CircleAvatar(backgroundImage: AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
+        Card(child:ListTile( title: Text("Junaid"),subtitle: Text("interview."), leading:  CircleAvatar(backgroundImage:AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
+        Card(child:ListTile( title: Text("Ali"),subtitle: Text("sent you a schedule."), leading:  CircleAvatar(backgroundImage: AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
         Card(child:ListTile( title: Text("Asad"),subtitle: Text("sent you a message."), leading:  CircleAvatar(backgroundImage:AssetImage("assets/screenshots/3d.jpg")), trailing: Icon(Icons.star))),
       ],
     );

@@ -10,6 +10,7 @@ import 'package:flutter_job_portal/jobseeker/alljob.dart';
 import 'package:flutter_job_portal/admin/applicants.dart';
 import '../ui/contactus.dart';
 import 'alljobsad.dart';
+import 'interviewsAdm.dart';
 
 void main()
 {
@@ -43,7 +44,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("CU jobs"),
+        title: Text("CU Jobs"),
         centerTitle: true,
         actionsIconTheme: IconThemeData(size: 32,),
       ),
@@ -91,7 +92,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  alljobs()),
+                  MaterialPageRoute(builder: (context) =>  alljobsad()),
                 );
               },
             ),
@@ -167,7 +168,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>resumead()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>res()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5),),
@@ -183,7 +184,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>notificationad()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>adnotification()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),
@@ -215,7 +216,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>interviewsAdmin()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),

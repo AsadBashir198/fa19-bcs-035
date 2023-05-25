@@ -3,10 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_job_portal/jobseeker/UserProfile.dart';
 import 'package:flutter_job_portal/employer/employers.dart';
+import 'package:flutter_job_portal/jobseeker/help&feedback.dart';
+import 'package:flutter_job_portal/jobseeker/track/trackcV.dart';
+
 import 'package:flutter_job_portal/ui/settings.dart';
 import 'package:flutter_job_portal/jobseeker/alljob.dart';
 import 'package:flutter_job_portal/admin/applicants.dart';
+import '../cv-maker/cv.dart';
 import '../ui/contactus.dart';
+import 'Notifications.dart';
+import 'intwerviewsU.dart';
 
 void main()
 {
@@ -40,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("CU jobs"),
+          title: Text("CU Jobs"),
           centerTitle: true,
           actionsIconTheme: IconThemeData(size: 32,),
           actions: <Widget>[
@@ -125,10 +131,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: Container(
+
         child: Padding(
           padding: EdgeInsets.only(top: 50),
           child: GridView(
-
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
 
               crossAxisCount: 2,
@@ -153,10 +159,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Resume()));
+                  // Navigator.push(context, MaterialPageRoute(builder: (context)=>Resume()));
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context)=>resume1()
+                  ));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5),),
@@ -170,10 +178,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>notif()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),
@@ -189,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>interviewsU()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),
@@ -205,7 +212,23 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>applicants()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>trackcvuser()));
+                },
+                child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
+                  color: const Color(0xFF4BA5A5), ),
+                  margin: EdgeInsets.all( 30.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.announcement,size: 70,color: Colors.white,),
+                      Text("Track your cv",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>helpfeedback()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),
@@ -217,6 +240,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Text("Help & Guide",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
+
                 ),
               ),
             ],

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_job_portal/jobseeker/searchU.dart';
 
 import 'applyform.dart';
 import 'home_page.dart';
@@ -56,6 +57,10 @@ class _alljobsState extends State<alljobs> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  sear()),
+              );
             },
           ),
         ],
@@ -69,6 +74,7 @@ class _alljobsState extends State<alljobs> {
             itemBuilder: (context,int index){
               var docid=snapshot.data.docs[index].id;
               return Container(
+
                 padding: EdgeInsets.all(20.0),
                 margin: EdgeInsets.all(10.0),
                 child: Center(
@@ -129,7 +135,7 @@ class _alljobsState extends State<alljobs> {
                                  style: ElevatedButton.styleFrom(
                                    primary:  Color(0xFF4BA5A5),
                                    onPrimary: Colors.white,
-                                   shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(6))),
+                                   shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(3))),
                                  ),
                                  onPressed: (){
                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>apply()));
@@ -148,10 +154,20 @@ class _alljobsState extends State<alljobs> {
 
                 ),
                 decoration: BoxDecoration(
-                    color: Colors.black12,
-                    borderRadius: BorderRadius.circular(15)
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15), //border corner radius
+                  boxShadow:[
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5), //color of shadow
+                      spreadRadius: 5, //spread radius
+                      blurRadius: 7, // blur radius
+                      offset: Offset(0, 2), // changes position of shadow
+                      //first paramerter of offset is left-right
+                      //second parameter is top to down
+                    ),
+                    //you can set more BoxShadow() here
+                  ],
                 ),
-
                 height: 240.0,
               );
             },

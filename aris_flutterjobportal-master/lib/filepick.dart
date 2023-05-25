@@ -7,11 +7,6 @@ import 'package:flutter_job_portal/jobseeker/alljob.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'jobseeker/home_page.dart';
-
-void main() {
-  runApp(const filepicker());
-}
-
 class filepicker extends StatelessWidget {
   const filepicker({Key key}) : super(key: key);
 
@@ -39,8 +34,7 @@ class filepickercl extends StatefulWidget {
 
 class _filepickerclState extends State<filepickercl>
     with SingleTickerProviderStateMixin {
-  final String _image =
-      'https://ouch-cdn2.icons8.com/84zU-uvFboh65geJMR5XIHCaNkx-BZ2TahEpE9TpVJM/rs:fit:784:784/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvODU5/L2E1MDk1MmUyLTg1/ZTMtNGU3OC1hYzlh/LWU2NDVmMWRiMjY0/OS5wbmc.png';
+
    AnimationController loadingController;
   File _file;
   PlatformFile _platformFile;
@@ -98,10 +92,7 @@ class _filepickerclState extends State<filepickercl>
               const SizedBox(
                 height: 100,
               ),
-              Image.network(
-                _image,
-                width: 300,
-              ),
+          Image.asset('assets/screenshots/uplo.jpg'),
               const SizedBox(
                 height: 50,
               ),

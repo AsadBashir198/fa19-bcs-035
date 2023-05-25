@@ -47,13 +47,7 @@ class _applicantsState extends State<applicants> {
               );
             }
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-            },
-          ),
-        ],
+       
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('applyform').snapshots(),
@@ -128,8 +122,19 @@ class _applicantsState extends State<applicants> {
 
                 ),
                 decoration: BoxDecoration(
-                    color: Colors.black12,
-                    borderRadius: BorderRadius.circular(15)
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15), //border corner radius
+                  boxShadow:[
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5), //color of shadow
+                      spreadRadius: 5, //spread radius
+                      blurRadius: 7, // blur radius
+                      offset: Offset(0, 2), // changes position of shadow
+                      //first paramerter of offset is left-right
+                      //second parameter is top to down
+                    ),
+                    //you can set more BoxShadow() here
+                  ],
                 ),
 
                 height: 180.0,
