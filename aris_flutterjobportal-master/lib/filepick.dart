@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_job_portal/jobseeker/alljob.dart';
 import 'package:iconsax/iconsax.dart';
@@ -32,38 +34,39 @@ class filepickercl extends StatefulWidget {
   State<filepickercl> createState() => _filepickerclState();
 }
 
-class _filepickerclState extends State<filepickercl>
-    with SingleTickerProviderStateMixin {
+class _filepickerclState extends State<filepickercl>with SingleTickerProviderStateMixin {
 
-   AnimationController loadingController;
-  File _file;
-  PlatformFile _platformFile;
 
-  selectFile() async {
-    final file = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ['png', 'jpg', 'jpeg',]
-    );
 
-    if (file != null) {
-      setState(() {
-        _file = File(file.files.single.path);
-        _platformFile = file.files.first;
-      });
-    }
-
-    loadingController.forward();
+  final  FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  Future<String>uploadpdf(String fileName,File file) async {
+    final reference = FirebaseStorage.instance.ref().child(
+        "pdfs/$fileName.pdf");
+    final uploadTask = reference.putFile(file);
+    await uploadTask.whenComplete(() {});
+    final downloadLink = await reference.getDownloadURL();
+    return downloadLink;
   }
 
 
-  @override
-  void initState() {
-    loadingController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 10),
-    )..addListener(() { setState(() {}); });
+  void pickFile() async{
+    final pickedFile = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
 
-    super.initState();
+    if (pickedFile != null){
+      String fileName = pickedFile.files[0].name;
+      File file = File(pickedFile.files[0].path);
+
+      final downloadLink=await uploadpdf(fileName,file);
+      await _firebaseFirestore.collection('pdf').add({
+        "name":fileName,
+        "url":downloadLink,
+
+      });
+      print("pdf uploaded successfully");
+    }
   }
 
   @override
@@ -89,6 +92,7 @@ class _filepickerclState extends State<filepickercl>
         body: SingleChildScrollView(
           child: Column(
             children: [
+
               const SizedBox(
                 height: 100,
               ),
@@ -107,114 +111,50 @@ class _filepickerclState extends State<filepickercl>
                 height: 10,
               ),
               Text(
-                'File should be jpg, png',
+                'File should be pdf',
                 style: TextStyle(fontSize: 15, color: Colors.grey.shade500),
               ),
+          ElevatedButton(
+            onPressed: () {
+              pickFile();
+              print('Button pressed!');
+            },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>( Color(0xFF4BA5A5),),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  'Upload cv ',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+
               const SizedBox(
                 height: 20,
               ),
-              GestureDetector(
-                onTap: selectFile,
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
-                    child: DottedBorder(
-                      borderType: BorderType.RRect,
-                      radius: const Radius.circular(10),
-                      dashPattern: const [10, 4],
-                      strokeCap: StrokeCap.round,
-                      color: Colors.blue.shade400,
-                      child: Container(
-                        width: double.infinity,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            color: Colors.blue.shade50.withOpacity(.3),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Iconsax.folder_open, color: Colors.blue, size: 40,),
-                            const SizedBox(height: 15,),
-                            Text('Select your file', style: TextStyle(fontSize: 15, color: Colors.grey.shade400),),
-                          ],
-                        ),
-                      ),
-                    )
-                ),
-              ),
-              _platformFile != null
-                  ? Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Selected File',
-                        style: TextStyle(color: Colors.grey.shade400, fontSize: 15, ),),
-                      const SizedBox(height: 10,),
-                      Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade200,
-                                  offset: const Offset(0, 1),
-                                  blurRadius: 3,
-                                  spreadRadius: 2,
-                                )
-                              ]
-                          ),
-                          child: Row(
-                            children: [
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Image.file(_file, width: 70,)
-                              ),
-                              const SizedBox(width: 10,),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(_platformFile.name,
-                                      style: const TextStyle(fontSize: 13, color: Colors.black),),
-                                    const SizedBox(height: 5,),
-                                    Text('${(_platformFile.size / 1024).ceil()} KB',
-                                      style: TextStyle(fontSize: 13, color: Colors.grey.shade500),
-                                    ),
-                                    const SizedBox(height: 5,),
-                                    Container(
-                                        height: 5,
-                                        clipBehavior: Clip.hardEdge,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
-                                          color: Colors.blue.shade50,
-                                        ),
-                                        child: LinearProgressIndicator(
-                                          value: loadingController.value,
-                                        )
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 10,),
-                            ],
-                          )
-                      ),
-                      const SizedBox(height: 20,),
-                      // MaterialButton(
-                      //   minWidth: double.infinity,
-                      //   height: 45,
-                      //   onPressed: () {},
-                      //   color: Colors.black,
-                      //   child: Text('Upload', style: TextStyle(color: Colors.white),),
-                      // )
-                    ],
-                  ))
-                  : Container(),
-              const SizedBox(height: 150,),
+
+
+
             ],
           ),
-        ));
+        )
+
+    );
   }
 }
