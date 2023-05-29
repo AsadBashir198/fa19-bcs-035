@@ -83,6 +83,15 @@ class _alljobsState extends State<alljobs> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              Text('Job_Title:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                              SizedBox(width: 49.0),
+                              Text(snapshot.data.docs[index]['jobtitle']),
+                            ]
+                        ),
+                        SizedBox(height:  10.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
 
                               Text('company:',
                                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
@@ -90,7 +99,7 @@ class _alljobsState extends State<alljobs> {
                               Text(snapshot.data.docs[index]['company']),
                             ]
                         ),
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 10.0),
                         Row(
 
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -103,7 +112,7 @@ class _alljobsState extends State<alljobs> {
                   ]
 
                 ),
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 10.0),
                         Row(
 
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -115,7 +124,7 @@ class _alljobsState extends State<alljobs> {
                             ]
 
                         ),
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 10.0),
                         Row(
 
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -168,7 +177,7 @@ class _alljobsState extends State<alljobs> {
                     //you can set more BoxShadow() here
                   ],
                 ),
-                height: 240.0,
+                height: 230.0,
               );
             },
 

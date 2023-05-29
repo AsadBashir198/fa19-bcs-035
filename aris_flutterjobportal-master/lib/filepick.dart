@@ -33,10 +33,7 @@ class filepickercl extends StatefulWidget {
   @override
   State<filepickercl> createState() => _filepickerclState();
 }
-
 class _filepickerclState extends State<filepickercl>with SingleTickerProviderStateMixin {
-
-
 
   final  FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   Future<String>uploadpdf(String fileName,File file) async {
@@ -47,14 +44,11 @@ class _filepickerclState extends State<filepickercl>with SingleTickerProviderSta
     final downloadLink = await reference.getDownloadURL();
     return downloadLink;
   }
-
-
   void pickFile() async{
     final pickedFile = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['pdf'],
     );
-
     if (pickedFile != null){
       String fileName = pickedFile.files[0].name;
       File file = File(pickedFile.files[0].path);

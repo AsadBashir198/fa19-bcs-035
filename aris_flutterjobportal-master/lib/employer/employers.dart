@@ -61,8 +61,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
   TextEditingController maxsalary = TextEditingController();
   TextEditingController startdate = TextEditingController();
   TextEditingController lastdate = TextEditingController();
-
-
+  TextEditingController testdate = TextEditingController();
+  TextEditingController interviewdate = TextEditingController();
+  TextEditingController jobtitle = TextEditingController();
+  var jotitle;
+  var test_dat;
+  var intrerviewedate;
   var com;
   var desi;
   var con;
@@ -207,13 +211,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
 
               ),
-
-
-
-
-
-
-
               SizedBox(height: 20.0),
               TextFormField(
                 controller:maxsalary,
@@ -230,6 +227,36 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 decoration: InputDecoration(
 
                   labelText: "last_date",
+                  filled: false,
+
+                ),
+
+              ),
+              TextFormField(
+                controller:testdate,
+                decoration: InputDecoration(
+
+                  labelText: "Test_date",
+                  filled: false,
+
+                ),
+
+              ),
+              TextFormField(
+                controller:interviewdate,
+                decoration: InputDecoration(
+
+                  labelText: "Interview_date",
+                  filled: false,
+
+                ),
+
+              ),
+              TextFormField(
+                controller:jobtitle,
+                decoration: InputDecoration(
+
+                  labelText: "Job_title",
                   filled: false,
 
                 ),
@@ -397,7 +424,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 controller:startdate,
                 decoration: InputDecoration(
 
-                  labelText: "last_date",
+                  labelText: "start_date",
                   filled: false,
 
                 ),
@@ -430,6 +457,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                   RaisedButton(
                     onPressed: () {
+                      jotitle=jobtitle.text;
+                      intrerviewedate=interviewdate.text;
+                      test_dat=testdate.text;
                       com=company.text;
                       desi=designation.text;
                       con=Contact.text;
@@ -443,7 +473,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       s_date=startdate.text;
                       FirebaseFirestore.instance.collection('jobpost').add({'company':'$com','designation':'$desi',
                         'contact':'$con','address':'$addr','qualification':'$qual','vacancies':'$vac',
-                        'description':'$desc','min salary':'$minsa','max salary':'$maxsa','l_date':'$l_date','s_date':'$s_date'});
+                        'description':'$desc','min salary':'$minsa','max salary':'$maxsa','l_date':'$l_date','s_date':'$s_date',
+                        'test_date':'$test_dat','interviewdate':'$intrerviewedate','jobtitle':'$jotitle'});
                       showDialog(
                           context: context,
                           builder: (context) {

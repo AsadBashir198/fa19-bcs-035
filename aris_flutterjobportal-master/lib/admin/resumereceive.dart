@@ -1,87 +1,166 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:http/http.dart' as http;
+import 'dart:io';
 
-import 'HomeAdmin.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(resumeeee());
+}
 
-void main() => runApp(res());
+class resumeeee extends StatelessWidget {
 
-class res extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: Colors.indigo[700],
-        ),
-        home: resumerec());
+      title: 'PDF Viewer',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: PDFListScreen(),
+    );
   }
 }
 
-class resumerec extends StatefulWidget {
+class PDFListScreen extends StatefulWidget {
   @override
-  _resumerecState createState() => _resumerecState();
+  _PDFListScreenState createState() => _PDFListScreenState();
 }
 
-class _resumerecState extends State<resumerec> {
+class _PDFListScreenState extends State<PDFListScreen> {
+
+
+  final  FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  List<Map<String,dynamic>>pdfData =[];
+
+
+  void getAllpdf()  async{
+ final results = await _firebaseFirestore.collection("pdfs").get();
+ pdfData = results.docs.map((e)=>e.data()).toList();
+ setState(() {
+
+ });
+  }
+  @override
+  void initState() {
+    super.initState();
+    getAllpdf();
+
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    var card = Container(
-      height: 120,
-      child: Card(
-        elevation: 9,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-        child: ListTile(
-          dense: false,
-
-          title: Text(
-            "For Post of Lecturer",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          subtitle: Text(
-            "Applicant: Mustafa Tahir",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-        ),
-      ),
-    );
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("Resumes"),
-        centerTitle: true,
-        actionsIconTheme: IconThemeData(size: 32,),
-       backgroundColor: Color(0xFF031047),
-        leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  homeadmin()),
-              );
-            }
-        ),
+        title: Text('PDF List'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              card,
-              card,
-              card,
-              card,
-              card,
-              card,
-            ],
-          ),
-        ),
+      body: GridView.builder(
+        itemCount: pdfData.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:2),
+        itemBuilder: (context, index) {
+
+          return Padding(padding: const EdgeInsets.all(8.8),
+          child:InkWell(
+            onTap: (){},
+            child: Container(
+              decoration: BoxDecoration(
+                border:Border.all(),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                  pdfData[index]['name'],
+                  style: TextStyle(
+                  fontSize: 18
+              ),
+              ),
+
+                ],
+              ),
+            ),
+          )
+          );
+        },
       ),
     );
   }
 }
+class PdfViewerScreen  extends StatefulWidget {
+  final String pdfUrl;
+
+  const PdfViewerScreen  ({Key key, this.pdfUrl}) : super(key: key);
+
+  @override
+  State<PdfViewerScreen> createState() => PdfViewerScreenState();
+}
+
+class PdfViewerScreenState extends State<PdfViewerScreen> {
+
+  PDFDocument document;
+  void initialisePdf()async
+  {
+    document= await PDFDocument.fromURL(widget.pdfUrl);
+    setState((){});
+
+}
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Placeholder();
+  }
+}
+
+// class PDFScreen extends StatelessWidget {
+//   final String pdfUrl;
+//
+//   const PDFScreen({Key key, this.pdfUrl}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('PDF Document'),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           child: Text('Open PDF'),
+//           onPressed: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(
+//                 builder: (context) => PDFViewerScreen(pdfUrl: pdfUrl),
+//               ),
+//             );
+//           },
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class PDFViewerScreen extends StatelessWidget {
+//   final String pdfUrl;
+//
+//   const PDFViewerScreen({Key key,  this.pdfUrl}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('PDF Viewer'),
+//       ),
+//
+//     );
+//   }
+// }

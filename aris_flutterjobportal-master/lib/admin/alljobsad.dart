@@ -9,10 +9,6 @@ import 'package:flutter_job_portal/admin/HomeAdmin.dart';
 import 'searJobs.dart';
 
 
-
-
-
-
 class alljobsad extends StatefulWidget {
 
 
