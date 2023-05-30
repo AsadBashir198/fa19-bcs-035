@@ -32,24 +32,18 @@ class _ApplyformUState extends State<ApplyformU> {
 
   TextEditingController names = TextEditingController();
   TextEditingController email = TextEditingController();
-  TextEditingController location = TextEditingController();
+  TextEditingController address = TextEditingController();
   TextEditingController phone = TextEditingController();
-  TextEditingController degree = TextEditingController();
-  TextEditingController institute = TextEditingController();
-  TextEditingController male= TextEditingController();
-  TextEditingController dated = TextEditingController();
+  TextEditingController company = TextEditingController();
+  TextEditingController post = TextEditingController();
 
-
-
+  var com;
   var name;
   var e_mail;
-
-  var Loc;
+  var j_post;
+  var addr;
   var ph;
-  var deg;
-  var ins;
-  var mal;
-  var date;
+
 
 
 
@@ -57,13 +51,13 @@ class _ApplyformUState extends State<ApplyformU> {
   String dropdownvalue = 'Male';
 
   // List of items in our dropdown menu
-  var gender = [
-    'Male',
-    'Female',
-    'Other',
-
-  ];
-  DateTime _dateTime;
+  // var gender = [
+  //   'Male',
+  //   'Female',
+  //   'Other',
+  //
+  // ];
+  // DateTime _dateTime;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +90,7 @@ class _ApplyformUState extends State<ApplyformU> {
             children: [
 
               Text(
-                "Apply For Job",
+                "Please Fill the Necessary fields",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
               ),
 
@@ -130,10 +124,19 @@ class _ApplyformUState extends State<ApplyformU> {
               SizedBox(
                 height: 10,
               ),
+              TextFormField(
+                controller: post,
+                decoration: InputDecoration(
 
+                  labelText: "job_name",
+                  filled: false,
+
+                ),
+
+              ),
 
               TextFormField(
-                controller: location,
+                controller: address,
                 decoration: InputDecoration(
 
                   labelText: "Address",
@@ -159,99 +162,93 @@ class _ApplyformUState extends State<ApplyformU> {
                 height: 10,
               ),
               TextField(
-                controller: degree,
+                controller: company,
                 decoration: InputDecoration(
 
-                  labelText: "Degree",
+                  labelText: "Company",
                   filled: false,
 
                 ),
 
               ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
 
-                controller: institute,
-                decoration: InputDecoration(
-
-                  labelText: "Institute",
-                  filled: false,
-
-                ),
-
-              ),
-              SizedBox(
-                height: 10,
-              ),
-
-              DropdownButtonFormField(
+              // TextField(
+              //
+              //   controller: institute,
+              //   decoration: InputDecoration(
+              //
+              //     labelText: "Institute",
+              //     filled: false,
+              //
+              //   ),
+              //
+              // ),
 
 
-                // Initial Value
-                value: dropdownvalue,
-
-
-                // Down Arrow Icon
-                icon: const Icon(Icons.keyboard_arrow_down),
-
-                // Array list of items
-                items: gender.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(),
-                // After selecting the desired option,it will
-                // change button value to selected value
-                onChanged: (String newValue) {
-                  setState(() {
-                    dropdownvalue = newValue;
-                  });
-                },
-              ),
+              // DropdownButtonFormField(
+              //
+              //
+              //   // Initial Value
+              //   value: dropdownvalue,
+              //
+              //
+              //   // Down Arrow Icon
+              //   icon: const Icon(Icons.keyboard_arrow_down),
+              //
+              //   // Array list of items
+              //   items: gender.map((String items) {
+              //     return DropdownMenuItem(
+              //       value: items,
+              //       child: Text(items),
+              //     );
+              //   }).toList(),
+              //   // After selecting the desired option,it will
+              //   // change button value to selected value
+              //   onChanged: (String newValue) {
+              //     setState(() {
+              //       dropdownvalue = newValue;
+              //     });
+              //   },
+              // ),
               SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        DatePicker.showDatePicker(context,
-                            showTitleActions: true,
-                            minTime: DateTime(1995, 3, 5),
-                            maxTime: DateTime(2022, 5, 30),
-                            theme: DatePickerTheme(
-                                headerColor:  Color(0xFF4BA5A5),
-                                backgroundColor: Colors.white70,
-                                itemStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 18),
-                                doneStyle:
-                                TextStyle(color: Colors.black, fontSize: 16)),
-                            onChanged: (date) {
-                              print('change $date in time zone ' +
-                                  date.timeZoneOffset.inHours.toString());
-                            }, onConfirm: (date) {
-                              print('confirm $date');
-                            }, currentTime: DateTime.now(), locale: LocaleType.en);
-                      },
-                      child: Text(
-                        'Date Of Birth',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(color: Colors.black),
-                      )),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.start,
+              //   children: [
+              //     TextButton(
+              //         onPressed: () {
+              //           DatePicker.showDatePicker(context,
+              //               showTitleActions: true,
+              //               minTime: DateTime(1995, 3, 5),
+              //               maxTime: DateTime(2022, 5, 30),
+              //               theme: DatePickerTheme(
+              //                   headerColor:  Color(0xFF4BA5A5),
+              //                   backgroundColor: Colors.white70,
+              //                   itemStyle: TextStyle(
+              //                       color: Colors.black,
+              //                       fontWeight: FontWeight.normal,
+              //                       fontSize: 18),
+              //                   doneStyle:
+              //                   TextStyle(color: Colors.black, fontSize: 16)),
+              //               onChanged: (date) {
+              //                 print('change $date in time zone ' +
+              //                     date.timeZoneOffset.inHours.toString());
+              //               }, onConfirm: (date) {
+              //                 print('confirm $date');
+              //               }, currentTime: DateTime.now(), locale: LocaleType.en);
+              //         },
+              //         child: Text(
+              //           'Date Of Birth',
+              //           textAlign: TextAlign.right,
+              //           style: TextStyle(color: Colors.black),
+              //         )),
+              //   ],
+              // ),
 
 
 
-              SizedBox(
-                height: 35,
-              ),
+
               ElevatedButton(
                 onPressed: () {
                     Navigator.push(
@@ -303,11 +300,14 @@ class _ApplyformUState extends State<ApplyformU> {
                     onPressed: () {
                       name=names.text;
                       e_mail=email.text;
+                      com=company.text;
+                      addr=address.text;
+                      j_post=post.text;
 
                       ph=phone.text;
-                      deg=degree.text;
-                      ins=institute.text;
-                      FirebaseFirestore.instance.collection('applyform').add({'name':'$name','e_mail':'$e_mail','ph':'$ph','deg':'$deg','ins':'$ins'});
+
+                      FirebaseFirestore.instance.collection('applyform').add({'name':'$name',
+                        'e_mail':'$e_mail','ph':'$ph','company':'$com','address':'$addr','post':'$j_post'});
                       showDialog(
                           context: context,
                           builder: (context) {

@@ -22,10 +22,18 @@ class _applicantsState extends State<applicants> {
 
   TextEditingController names = TextEditingController();
   TextEditingController email = TextEditingController();
+  TextEditingController address = TextEditingController();
   TextEditingController phone = TextEditingController();
+  TextEditingController company = TextEditingController();
+  TextEditingController post = TextEditingController();
 
+
+
+  var com;
   var name;
   var e_mail;
+  var j_post;
+  var addr;
   var ph;
 
   @override
@@ -74,7 +82,19 @@ class _applicantsState extends State<applicants> {
                           ]
 
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
+                      Row(
+
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+
+                            Text('Job_name:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                            SizedBox(width: 49.0),
+                            Text(snapshot.data.docs[index]['post']),
+                          ]
+
+                      ),
+                      SizedBox(height: 10.0),
                       Row(
 
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -87,7 +107,7 @@ class _applicantsState extends State<applicants> {
                           ]
 
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
                       Row(
 
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -99,7 +119,18 @@ class _applicantsState extends State<applicants> {
                           ]
 
                       ),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 10.0),
+                      Row(
+
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+
+                            Text('Company:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                            SizedBox(width: 49.0),
+                            Text(snapshot.data.docs[index]['company']),
+                          ]
+
+                      ),
                       // Row(
                       //
                       //     mainAxisAlignment: MainAxisAlignment.start,

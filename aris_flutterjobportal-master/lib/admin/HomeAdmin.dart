@@ -123,7 +123,19 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
         ),
       ),
       body: Container(
+        width: 340,
+        height: 590,
+        margin: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+
+            border: Border.all(
+              color:  Color(0xFF031047),
+              width: 12,
+            )),
+
         child: Padding(
+
+
           padding: EdgeInsets.only(top: 50),
           child: GridView(
 
@@ -194,7 +206,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.notifications_active_rounded,size: 50,color: Colors.white,),
-                      Text("Notifications",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("Alerts",style: TextStyle(color:Colors.white,fontSize: 20 ),)
                     ],
                   ),
                 ),
@@ -217,7 +229,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>interviewsAdmin()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>interviewsA()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),

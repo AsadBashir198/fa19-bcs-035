@@ -34,6 +34,7 @@ class _alljobsadState extends State<alljobsad> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: new AppBar(
         title: new Text('All Jobs'),

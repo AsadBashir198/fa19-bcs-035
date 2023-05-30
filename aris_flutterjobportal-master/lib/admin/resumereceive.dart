@@ -42,9 +42,8 @@ class _PDFListScreenState extends State<PDFListScreen> {
 
   void getAllpdf()  async{
  final results = await _firebaseFirestore.collection("pdfs").get();
- pdfData = results.docs.map((e)=>e.data()).toList();
  setState(() {
-
+   pdfData = results.docs.map((e)=>e.data()).toList();
  });
   }
   @override
@@ -62,35 +61,40 @@ class _PDFListScreenState extends State<PDFListScreen> {
       appBar: AppBar(
         title: Text('PDF List'),
       ),
-      body: GridView.builder(
-        itemCount: pdfData.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:2),
-        itemBuilder: (context, index) {
+      // body: GridView.builder(
+      //   itemCount: pdfData.length,
+      //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:2),
+      //   itemBuilder: (context, index) {
+      //
+      //     return Padding(padding: const EdgeInsets.all(8.8),
+      //     child:InkWell(
+      //       onTap: (){print(pdfData.length);},
+      //       child: Container(
+      //         decoration: BoxDecoration(
+      //           border:Border.all(),
+      //         ),
+      //         child: Column(
+      //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //           children: [
+      //             Text(
+      //             pdfData[index]['name'],
+      //             style: TextStyle(
+      //             fontSize: 18
+      //         ),
+      //         ),
+      //
+      //           ],
+      //         ),
+      //       ),
+      //     )
+      //     );
+      //   },
+      // ),
+      body: ElevatedButton(onPressed: (){
+        getAllpdf();
+        print(pdfData.length);
 
-          return Padding(padding: const EdgeInsets.all(8.8),
-          child:InkWell(
-            onTap: (){},
-            child: Container(
-              decoration: BoxDecoration(
-                border:Border.all(),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                  pdfData[index]['name'],
-                  style: TextStyle(
-                  fontSize: 18
-              ),
-              ),
-
-                ],
-              ),
-            ),
-          )
-          );
-        },
-      ),
+      },child: Text("Check"),),
     );
   }
 }

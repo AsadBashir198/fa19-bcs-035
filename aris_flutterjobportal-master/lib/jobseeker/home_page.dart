@@ -131,7 +131,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: Container(
+        width: 340,
+        height: 590,
+        margin: EdgeInsets.all(10),
+        decoration: BoxDecoration(
 
+            border: Border.all(
+              color:  Color(0xFF031047),
+              width: 12,
+            )),
         child: Padding(
           padding: EdgeInsets.only(top: 50),
           child: GridView(
@@ -154,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.search_rounded,size: 50,color: Colors.white,),
-                      Text("All Jobs",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("All Jobs",style: TextStyle(color:Colors.white,fontSize: 18 ),)
                     ],
                   ),
                 ),
@@ -173,7 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.account_box_rounded,size: 50,color: Colors.white,),
-                      Text("Resume",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("Resume",style: TextStyle(color:Colors.white,fontSize: 18 ),)
                     ],
                   ),
                 ),
@@ -189,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.notifications_active_rounded,size: 50,color: Colors.white,),
-                      Text("Notifications",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("Alerts",style: TextStyle(color:Colors.white,fontSize: 18 ),)
                     ],
                   ),
                 ),
@@ -205,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.announcement,size: 70,color: Colors.white,),
-                      Text("Interviews",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("Interviews",style: TextStyle(color:Colors.white,fontSize: 18 ),)
                     ],
                   ),
                 ),
@@ -221,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.announcement,size: 70,color: Colors.white,),
-                      Text("Track your cv",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("Track_Cv",style: TextStyle(color:Colors.white,fontSize: 18 ),)
                     ],
                   ),
                 ),
@@ -237,7 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.help,size: 70,color: Colors.white,),
-                      Text("Help & Guide",style: TextStyle(color:Colors.white,fontSize: 20 ),)
+                      Text("Help?",style: TextStyle(color:Colors.white,fontSize: 18 ),)
                     ],
                   ),
 
