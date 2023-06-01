@@ -181,7 +181,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PDFListScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PDFScreen()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5),),

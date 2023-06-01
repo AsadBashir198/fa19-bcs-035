@@ -65,14 +65,15 @@ class _interviewsAState extends State<interviewsA> {
                 child: Center(
                   child: Column(
                     children: [
+
                       Row(
+
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
 
-                            Text('Interview_Date:',
-                              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 30.0),
-                            Text(snapshot.data.docs[index]['interviewdate']),
+                            Text('Company:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                            SizedBox(width: 49.0),
+                            Text(snapshot.data.docs[index]['company']),
                           ]
 
                       ),
@@ -89,19 +90,20 @@ class _interviewsAState extends State<interviewsA> {
 
                       ),
                       SizedBox(height: 10.0),
-                      // Row(
-                      //
-                      //     mainAxisAlignment: MainAxisAlignment.start,
-                      //     children: [
-                      //       Text('email:',
-                      //         style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                      //       SizedBox(width: 30.0),
-                      //       Text(snapshot.data.docs[index]['e_mail']),
-                      //
-                      //     ]
-                      //
-                      // ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+
+                            Text('Interview_Date:',
+                              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                            SizedBox(width: 30.0),
+                            Text(snapshot.data.docs[index]['interviewdate']),
+                          ]
+
+                      ),
                       SizedBox(height: 10.0),
+
+
                       Row(
 
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -113,18 +115,7 @@ class _interviewsAState extends State<interviewsA> {
                           ]
 
                       ),
-                      SizedBox(height: 10.0),
-                      Row(
 
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-
-                            Text('Company:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 49.0),
-                            Text(snapshot.data.docs[index]['company']),
-                          ]
-
-                      ),
 
                     ],
                   ),
@@ -147,7 +138,7 @@ class _interviewsAState extends State<interviewsA> {
                   ],
                 ),
 
-                height: 180.0,
+                height: 150.0,
               );
             },
 

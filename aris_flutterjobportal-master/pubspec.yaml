@@ -44,7 +44,6 @@ dependencies:
   loading_indicator: ^3.0.2
   dotted_border: ^2.0.0+1
   iconsax: ^0.0.8
-  dio: ^4.0.0
   path_provider: ^2.0.0
   dropdownfield: ^1.0.3
   pdf: ^3.0.0
@@ -58,6 +57,7 @@ dependencies:
   permission_handler:
   flutter_icons:
   provider:
+  dio: ^5.1.2
   shared_preferences:
   http:
   easy_pdf_viewer: ^1.0.6

@@ -1,170 +1,106 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(resumeeee());
-}
+import 'package:path_provider/path_provider.dart';
 
-class resumeeee extends StatelessWidget {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'PDF Viewer',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: PDFListScreen(),
-    );
-  }
-}
-
-class PDFListScreen extends StatefulWidget {
-  @override
-  _PDFListScreenState createState() => _PDFListScreenState();
-}
-
-class _PDFListScreenState extends State<PDFListScreen> {
-
-
-  final  FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-  List<Map<String,dynamic>>pdfData =[];
-
-
-  void getAllpdf()  async{
- final results = await _firebaseFirestore.collection("pdfs").get();
- setState(() {
-   pdfData = results.docs.map((e)=>e.data()).toList();
- });
-  }
-  @override
-  void initState() {
-    super.initState();
-    getAllpdf();
-
-  }
-
-
+class PDFScreen extends StatelessWidget {
+  final CollectionReference pdfCollection =
+  FirebaseFirestore.instance.collection('pdf');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PDF List'),
+        title: Text("CV's"),
       ),
-      // body: GridView.builder(
-      //   itemCount: pdfData.length,
-      //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:2),
-      //   itemBuilder: (context, index) {
-      //
-      //     return Padding(padding: const EdgeInsets.all(8.8),
-      //     child:InkWell(
-      //       onTap: (){print(pdfData.length);},
-      //       child: Container(
-      //         decoration: BoxDecoration(
-      //           border:Border.all(),
-      //         ),
-      //         child: Column(
-      //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //           children: [
-      //             Text(
-      //             pdfData[index]['name'],
-      //             style: TextStyle(
-      //             fontSize: 18
-      //         ),
-      //         ),
-      //
-      //           ],
-      //         ),
-      //       ),
-      //     )
-      //     );
-      //   },
-      // ),
-      body: ElevatedButton(onPressed: (){
-        getAllpdf();
-        print(pdfData.length);
+      body: StreamBuilder<QuerySnapshot>(
+        stream: pdfCollection.snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
 
-      },child: Text("Check"),),
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
+
+          if (!snapshot.hasData || snapshot.data.docs.isEmpty) {
+            return Text('No PDFs found.');
+          }
+
+          return ListView(
+            children: snapshot.data.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data =
+              document.data() as Map<String, dynamic>;
+              String pdfName = data['name'];
+              String pdfUrl = data['url'];
+
+              return Card(
+                elevation: 3,
+                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: InkWell(
+                  onTap: () {
+                    _viewPDF(context, pdfUrl);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      pdfName,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }).toList(),
+          );
+        },
+      ),
     );
   }
+
+  Future<void> _viewPDF(BuildContext context, String pdfUrl) async {
+    try {
+      var response = await http.get(Uri.parse(pdfUrl));
+      var tempDir = await getTemporaryDirectory();
+      var filePath = '${tempDir.path}/temp.pdf';
+      File pdfFile = File(filePath);
+      await pdfFile.writeAsBytes(response.bodyBytes);
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PDFViewer(
+            filePath: filePath,
+          ),
+        ),
+      );
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
 }
-class PdfViewerScreen  extends StatefulWidget {
-  final String pdfUrl;
 
-  const PdfViewerScreen  ({Key key, this.pdfUrl}) : super(key: key);
+class PDFViewer extends StatelessWidget {
+  final String filePath;
 
-  @override
-  State<PdfViewerScreen> createState() => PdfViewerScreenState();
-}
-
-class PdfViewerScreenState extends State<PdfViewerScreen> {
-
-  PDFDocument document;
-  void initialisePdf()async
-  {
-    document= await PDFDocument.fromURL(widget.pdfUrl);
-    setState((){});
-
-}
-
-
+  const PDFViewer({Key key, this.filePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('PDF Viewer'),
+      ),
+      body: PDFView(
+        filePath: filePath,
+      ),
+    );
   }
 }
-
-// class PDFScreen extends StatelessWidget {
-//   final String pdfUrl;
-//
-//   const PDFScreen({Key key, this.pdfUrl}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('PDF Document'),
-//       ),
-//       body: Center(
-//         child: ElevatedButton(
-//           child: Text('Open PDF'),
-//           onPressed: () {
-//             Navigator.push(
-//               context,
-//               MaterialPageRoute(
-//                 builder: (context) => PDFViewerScreen(pdfUrl: pdfUrl),
-//               ),
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class PDFViewerScreen extends StatelessWidget {
-//   final String pdfUrl;
-//
-//   const PDFViewerScreen({Key key,  this.pdfUrl}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('PDF Viewer'),
-//       ),
-//
-//     );
-//   }
-// }
