@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:flutter_job_portal/admin/trackAdm.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
@@ -31,11 +32,9 @@ class PDFScreen extends StatelessWidget {
           if (!snapshot.hasData || snapshot.data.docs.isEmpty) {
             return Text('No PDFs found.');
           }
-
           return ListView(
             children: snapshot.data.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data =
-              document.data() as Map<String, dynamic>;
+              Map<String, dynamic> data = document.data() as Map<String, dynamic>;
               String pdfName = data['name'];
               String pdfUrl = data['url'];
 
@@ -48,18 +47,40 @@ class PDFScreen extends StatelessWidget {
                   },
                   child: Padding(
                     padding: EdgeInsets.all(16),
-                    child: Text(
-                      pdfName,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            pdfName,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.download),
+                          onPressed: () {
+                            _viewPDF(context, pdfUrl);
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.web_asset),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => RadioDataUploader()),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ),
               );
             }).toList(),
           );
+
         },
       ),
     );

@@ -148,12 +148,9 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>alljobsad()));
                 },
-
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.0),
-
                   color: const Color(0xFF4BA5A5), ),
                   margin: EdgeInsets.all( 30.0),
-
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
