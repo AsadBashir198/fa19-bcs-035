@@ -1,84 +1,65 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:path/path.dart';
 
-import '../home_page.dart';
-
-
-
-
-
-class trackcvuser extends StatelessWidget {
+class FirestoreCheckboxScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'CV ',
-      theme: ThemeData(
-        primaryColor: const Color(0xFF031047),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Track your CV'),
       ),
-      home: TimelineComponent()
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('cvtrack1')
+            .doc('resume5')
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasData && snapshot.data != null) {
+            Map<String, dynamic> data = snapshot.data.data();
+            if (data != null && data.containsKey('procedure')) {
+              List<String> selectedDays = List<String>.from(data['procedure']);
+              return ListView.builder(
+                itemCount: selectedDays.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: Row(
+                      children: [
+                        Icon(Icons.check_box),
+                        Text('Your Cv is: ',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600,),),
+                        SizedBox(width: 30.0),
+                        Text(selectedDays[index]),
+                        SizedBox(width: 8),
+
+
+                      ],
+                    ),
+                  );
+                },
+              );
+
+
+
+            }
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }
 
-class TimelineComponent extends StatelessWidget {
 
 
-
+class cvtrackU extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    Random random = new Random();
-    return Scaffold(
-      drawer: Drawer(),
-      appBar: new AppBar(
-        title: new Text('Track your CV' ),
-        centerTitle: true,
-        backgroundColor: const Color(0xFF031047),
-        leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  Homepage()),
-              );
-            }
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Container(
-                height: 100,
-                width: double.infinity,
-                child: Image.asset("assets/screenshots/banner.jpg",
-                    fit: BoxFit.fitWidth),
-              ),
-              Positioned(
-                top: 40,
-                left: 30,
-                child: Row(children: <Widget>[
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-
-                    ),
-                  ),
-                ]),
-              ),
-
-            ],
-          ),
-        ],
-      ),
+    return MaterialApp(
+      title: 'cvtrack',
+      home: FirestoreCheckboxScreen(),
     );
   }
 }

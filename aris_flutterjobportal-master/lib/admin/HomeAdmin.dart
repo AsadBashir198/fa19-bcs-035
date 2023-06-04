@@ -9,7 +9,6 @@ import 'package:flutter_job_portal/ui/settings.dart';
 import 'package:flutter_job_portal/jobseeker/alljob.dart';
 import 'package:flutter_job_portal/admin/applicants.dart';
 import '../ui/contactus.dart';
-import 'Track_ResumeAd.dart';
 import 'alljobsad.dart';
 import 'interviewsAdm.dart';
 
@@ -194,7 +193,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckboxScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>adnotification()));
                 },
                 child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xFF4BA5A5), ),

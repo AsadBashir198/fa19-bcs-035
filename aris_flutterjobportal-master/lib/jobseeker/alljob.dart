@@ -59,7 +59,7 @@ class _alljobsState extends State<alljobs> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  sear()),
+                MaterialPageRoute(builder: (context) =>  SearchScreen()),
               );
             },
           ),
