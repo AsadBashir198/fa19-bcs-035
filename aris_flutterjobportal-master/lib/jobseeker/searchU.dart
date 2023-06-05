@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class SearchScreen extends StatefulWidget {
+import 'applyform.dart';
+
+class SearchU extends StatefulWidget {
   @override
-  _SearchScreenState createState() => _SearchScreenState();
+  _SearchUState createState() => _SearchUState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
-  List<DocumentSnapshot> searchResults = [];
+class _SearchUState extends State<SearchU> {
+  TextEditingController searchController = TextEditingController();
+  String searchQuery = "";
+  List<QueryDocumentSnapshot> searchResults = [];
 
-  Future<void> searchFirestoreData(Map<String, dynamic> filters) async {
-    // Create a Firestore query based on the provided filters
-    Query query = FirebaseFirestore.instance.collection('jobpost');
-
-    // Apply the filters to the query
-    filters.forEach((field, value) {
-      query = query.where(field, isEqualTo: value);
-    });
-
-    // Retrieve the filtered documents
-    QuerySnapshot querySnapshot = await query.get();
-
+  Future<void> searchJob() async {
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('jobpost')
+        .where('company', isGreaterThanOrEqualTo: searchQuery)
+        .where('company', isLessThan: searchQuery + 'z')
+        .get();
     setState(() {
-      // Store the retrieved documents in searchResults
-      searchResults = querySnapshot.docs;
+      searchResults = snapshot.docs;
     });
   }
 
@@ -31,67 +28,344 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Filter Search'),
+        title: Text('Job Search'),
       ),
       body: Column(
         children: [
-          // Add filter input fields here
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Job Title',
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: searchController,
+                    onChanged: (value) {
+                      setState(() {
+                        searchQuery = value;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Search',
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: searchJob,
+                ),
+              ],
             ),
-            onChanged: (value) {
-              // Update the job title filter
-              // ...
-            },
           ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Designation',
-            ),
-            onChanged: (value) {
-              // Update the designation filter
-              // ...
-            },
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Company',
-            ),
-            onChanged: (value) {
-              // Update the company filter
-              // ...
-            },
-          ),
-          RaisedButton(
-            child: Text('Search'),
-            onPressed: () {
-              // Define your filters as a map
-              Map<String, dynamic> filters = {
-                'jobtitle': 'fadii', // Replace 'value1' with the actual filter value for job title
-                'designation': 'gujbvcrhk', // Replace 'value2' with the actual filter value for designation
-                'company': 'asadgh', // Replace 'value3' with the actual filter value for company
-              };
-
-              searchFirestoreData(filters);
-            },
-          ),
-
           Expanded(
             child: ListView.builder(
               itemCount: searchResults.length,
               itemBuilder: (context, index) {
-                DocumentSnapshot doc = searchResults[index];
-                // Display the document details
                 return ListTile(
-                  title: Text(doc['jobtitle']),
-                  subtitle: Text(doc['designation']),
-                  // Add more fields to display as needed
+                  title: Text(searchResults[index]['company']),
+                  subtitle: Text(searchResults[index]['vacancies']),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsScreen(searchResults[index]),
+                      ),
+                    );
+                  },
                 );
               },
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class DetailsScreen extends StatelessWidget {
+  final QueryDocumentSnapshot job;
+
+  DetailsScreen(this.job);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Job Details'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Company:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['company'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Vacancies:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['vacancies'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Contact:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['contact'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Qualification:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['qualification'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Address:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['address'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Description:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['description'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Designation:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['designation'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Interview_Date:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['interviewdate'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Job_Title:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['jobtitle'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Last_Date:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['l_date'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Max Salary:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['max salary'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Min Salary:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['min salary'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Start_Date:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['s_date'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Test_Date:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['test_date'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => apply()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Color(0xFF4BA5A5), // Set the background color
+              ),
+
+              child: Text('Apply'),
+            ),
+
+          ],
+        ),
       ),
     );
   }
