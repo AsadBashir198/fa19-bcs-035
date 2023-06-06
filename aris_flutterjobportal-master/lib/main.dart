@@ -4,9 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_job_portal/jobseeker/abc.dart';
 import 'package:get/get.dart';
 import 'admin/login-admin.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+
+
 Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(
@@ -76,7 +82,7 @@ class MyApp extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     backgroundColor: const Color(0xFF4BA5A5),
-                    radius: 145,
+                    radius: 140,
                     child: CircleAvatar(
                       radius: 130,
                       backgroundImage: AssetImage('assets/screenshots/COMSATS_new_logo.jpg'),
@@ -93,7 +99,7 @@ class MyApp extends StatelessWidget {
                       child: Text('Admin'),
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF4BA5A5),
-                          fixedSize: const Size(250,70),
+                          fixedSize: const Size(200,50),
                         // side: BorderSide(color: Colors.yellow, width: 5),
                         textStyle: const TextStyle(
                             color: Colors.white, fontSize: 25, fontStyle: FontStyle.normal),
@@ -111,7 +117,7 @@ class MyApp extends StatelessWidget {
                       child: Text('Jobseeker'),
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF4BA5A5),
-                           fixedSize: const Size(250,70),
+                           fixedSize: const Size(200,50),
                         // side: BorderSide(color: Colors.yellow, width: 5),
                         textStyle: const TextStyle(
                             color: Colors.white, fontSize: 25, fontStyle: FontStyle.normal),

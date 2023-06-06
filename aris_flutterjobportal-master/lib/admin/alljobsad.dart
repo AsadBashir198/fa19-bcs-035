@@ -58,7 +58,7 @@ class _alljobsadState extends State<alljobsad> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>searAd()),
+                MaterialPageRoute(builder: (context) =>SearchAd()),
               );
             },
           ),
@@ -85,7 +85,8 @@ class _alljobsadState extends State<alljobsad> {
                             Text('company:',
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                             SizedBox(width: 30.0),
-                            Text(snapshot.data.docs[index]['company']),
+                            Text(snapshot.data.docs[index]['company'] ,style: TextStyle(fontSize: 16),
+                  textAlign: TextAlign.justify,),
                           ]
                       ),
                       SizedBox(height: 20.0),
@@ -96,7 +97,8 @@ class _alljobsadState extends State<alljobsad> {
                             Text('vacancies:',
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                             SizedBox(width: 30.0),
-                            Text(snapshot.data.docs[index]['vacancies']),
+                            Text(snapshot.data.docs[index]['vacancies'],style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.justify,),
 
                           ]
 
@@ -109,7 +111,8 @@ class _alljobsadState extends State<alljobsad> {
 
                             Text('contact:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                             SizedBox(width: 49.0),
-                            Text(snapshot.data.docs[index]['contact']),
+                            Text(snapshot.data.docs[index]['contact'],style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.justify,),
                           ]
 
                       ),
@@ -121,7 +124,8 @@ class _alljobsadState extends State<alljobsad> {
 
                             Text('Qualification:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                             SizedBox(width: 25.0),
-                            Text(snapshot.data.docs[index]['qualification']),
+                            Text(snapshot.data.docs[index]['qualification'],style: TextStyle(fontSize: 14),
+                              textAlign: TextAlign.justify,),
                           ]
 
                       ),

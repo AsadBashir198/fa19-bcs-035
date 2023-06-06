@@ -1,74 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_job_portal/jobseeker/alljob.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'home_page.dart';
 
-void main() {
-  runApp(const searAd());
+
+class SearchAd extends StatefulWidget {
+  @override
+  _SearchAdState createState() => _SearchAdState();
 }
 
-class searAd extends StatelessWidget {
-  const searAd({Key key}) : super(key: key);
+class _SearchAdState extends State<SearchAd> {
+  TextEditingController searchController = TextEditingController();
+  String searchQuery = "";
+  List<QueryDocumentSnapshot> searchResults = [];
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      // Remove the debug banner
-      debugShowCheckedModeBanner: false,
-      title: 'Cu Jobs',
-      home: searchjob(),
-    );
-  }
-}
-
-class searchjob extends StatefulWidget {
-  const searchjob({Key key}) : super(key: key);
-
-  @override
-  _searchjobState createState() => _searchjobState();
-}
-
-class _searchjobState extends State<searchjob> {
-  // This holds a list of fiction users
-  // You can use data fetched from a database or a server as well
-  final List<Map<String, dynamic>> _allUsers = [
-    {"id": 1, "name": "Lecturer", "age": 40},
-    {"id": 2, "name": "Clerk", "age": 29},
-    {"id": 3, "name": "Mali", "age": 5},
-    {"id": 4, "name": "Lab Assistant", "age": 35},
-    {"id": 5, "name": "Superintendents", "age": 21},
-    {"id": 6, "name": "Sports Coach.", "age": 55},
-    {"id": 7, "name": "Instructional Coordinators", "age": 30},
-    {"id": 8, "name": "Library Technicians", "age": 14},
-
-  ];
-
-  // This list holds the data for the list view
-  List<Map<String, dynamic>> _foundJobs = [];
-  @override
-  initState() {
-    // at the beginning, all users are shown
-    _foundJobs = _allUsers;
-    super.initState();
-  }
-
-  // This function is called whenever the text field changes
-  void _runFilter(String enteredKeyword) {
-    List<Map<String, dynamic>> results = [];
-    if (enteredKeyword.isEmpty) {
-      // if the search field is empty or only contains white-space, we'll display all users
-      results = _allUsers;
-    } else {
-      results = _allUsers
-          .where((user) =>
-          user["name"].toLowerCase().contains(enteredKeyword.toLowerCase()))
-          .toList();
-      // we use the toLowerCase() method to make it case-insensitive
-    }
-
-    // Refresh the UI
+  Future<void> searchJob() async {
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('jobpost')
+        .where('jobtitle', isGreaterThanOrEqualTo: searchQuery)
+        .where('jobtitle', isLessThan: searchQuery + 'z')
+        .get();
     setState(() {
-      _foundJobs = results;
+      searchResults = snapshot.docs;
     });
   }
 
@@ -76,60 +28,331 @@ class _searchjobState extends State<searchjob> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CU Jobs'),
-        centerTitle: true,
-        leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  alljobs()),
-              );
-            }
-        ),
-        backgroundColor: Color(0xFF031047),
+        title: Text('Job Search'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-
-            TextField(
-              onChanged: (value) => _runFilter(value),
-              decoration: const InputDecoration(
-                  labelText: 'Search', suffixIcon: Icon(Icons.search)),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: _foundJobs.isNotEmpty
-                  ? ListView.builder(
-                itemCount: _foundJobs.length,
-                itemBuilder: (context, index) => Card(
-                  key: ValueKey(_foundJobs[index]["id"]),
-                  color: Colors.white,
-                  elevation: 4,
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: ListTile(
-                    leading: Text(
-                      _foundJobs[index]["id"].toString(),
-                      style: const TextStyle(fontSize: 24),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: searchController,
+                    onChanged: (value) {
+                      setState(() {
+                        searchQuery = value;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Search',
                     ),
-                    title: Text(_foundJobs[index]['name']),
-                    subtitle: Text(
-                        '${_foundJobs[index]["age"].toString()} days before'),
                   ),
                 ),
-              )
-                  : const Text(
-                'No results found',
-                style: TextStyle(fontSize: 24),
-              ),
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: searchJob,
+                ),
+              ],
             ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: searchResults.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(searchResults[index]['jobtitle']),
+                  subtitle: Text(searchResults[index]['company']),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsScreen(searchResults[index]),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DetailsScreen extends StatelessWidget {
+  final QueryDocumentSnapshot job;
+
+  DetailsScreen(this.job);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Job Details'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Job_Title:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['jobtitle'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Company:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['company'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Vacancies:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['vacancies'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Contact:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['contact'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Qualification:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['qualification'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Address:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['address'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Description:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['description'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Designation:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['designation'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Interview_Date:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['interviewdate'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Last_Date:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['l_date'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Max Salary:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['max salary'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Min Salary:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['min salary'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Start_Date:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['s_date'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Test_Date:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['test_date'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10,),
+
+
           ],
         ),
       ),

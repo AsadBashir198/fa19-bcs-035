@@ -16,8 +16,8 @@ class _SearchUState extends State<SearchU> {
   Future<void> searchJob() async {
     QuerySnapshot snapshot = await FirebaseFirestore.instance
         .collection('jobpost')
-        .where('company', isGreaterThanOrEqualTo: searchQuery)
-        .where('company', isLessThan: searchQuery + 'z')
+        .where('jobtitle', isGreaterThanOrEqualTo: searchQuery)
+        .where('jobtitle', isLessThan: searchQuery + 'z')
         .get();
     setState(() {
       searchResults = snapshot.docs;
@@ -61,8 +61,8 @@ class _SearchUState extends State<SearchU> {
               itemCount: searchResults.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(searchResults[index]['company']),
-                  subtitle: Text(searchResults[index]['vacancies']),
+                  title: Text(searchResults[index]['jobtitle']),
+                  subtitle: Text(searchResults[index]['company']),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -98,6 +98,24 @@ class DetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
 
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Job_Title:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    job['jobtitle'],
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
             Row(
               children: [
                 Expanded(
@@ -241,24 +259,7 @@ class DetailsScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    'Job_Title:',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    job['jobtitle'],
-                    style: TextStyle(fontSize: 16),
-                    textAlign: TextAlign.justify,
-                  ),
-                ),
-              ],
-            ),
+
             SizedBox(height: 10),
             Row(
               children: [

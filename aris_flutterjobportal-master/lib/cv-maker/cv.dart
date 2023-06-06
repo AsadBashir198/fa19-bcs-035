@@ -151,7 +151,13 @@ class _cv_homeState extends State<cv_home> {
                   generatePDF();
                 },
                 child: Text('Generate PDF'),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Color(0xFF4BA5A5),
+                  ),
+                ),
               ),
+
               SizedBox(height: 20),
               Text(resultMessage),
             ],

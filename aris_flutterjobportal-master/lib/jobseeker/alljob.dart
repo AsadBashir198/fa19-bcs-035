@@ -96,7 +96,8 @@ class _alljobsState extends State<alljobs> {
                               Text('company:',
                                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                               SizedBox(width: 30.0),
-                              Text(snapshot.data.docs[index]['company']),
+                              Text(snapshot.data.docs[index]['company'],style: TextStyle(fontSize: 16),
+                                textAlign: TextAlign.justify,),
                             ]
                         ),
                         SizedBox(height: 10.0),

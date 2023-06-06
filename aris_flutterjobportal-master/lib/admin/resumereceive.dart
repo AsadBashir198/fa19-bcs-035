@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter_job_portal/admin/trackAdm.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
-
 import 'package:path_provider/path_provider.dart';
 
 class PDFScreen extends StatelessWidget {
@@ -34,7 +32,8 @@ class PDFScreen extends StatelessWidget {
           }
           return ListView(
             children: snapshot.data.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+              Map<String, dynamic> data =
+              document.data() as Map<String, dynamic>;
               String pdfName = data['name'];
               String pdfUrl = data['url'];
 
@@ -43,17 +42,17 @@ class PDFScreen extends StatelessWidget {
                 margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: InkWell(
                   onTap: () {
-                    _viewPDF(context, pdfUrl);
+                    _openPDF(context, pdfUrl, pdfName);
                   },
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: EdgeInsets.all(10),
                     child: Row(
                       children: [
                         Expanded(
                           child: Text(
                             pdfName,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -61,15 +60,19 @@ class PDFScreen extends StatelessWidget {
                         IconButton(
                           icon: Icon(Icons.download),
                           onPressed: () {
-                            _viewPDF(context, pdfUrl);
+                            _downloadPDF(context, pdfUrl, pdfName);
                           },
                         ),
+
                         IconButton(
-                          icon: Icon(Icons.web_asset),
+                          icon: Icon(Icons.art_track),
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => CheckboxScreen()),
+                              MaterialPageRoute(
+                                builder: (context) => CheckboxScreen(
+                                ),
+                              ),
                             );
                           },
                         ),
@@ -80,17 +83,36 @@ class PDFScreen extends StatelessWidget {
               );
             }).toList(),
           );
-
         },
       ),
     );
   }
 
-  Future<void> _viewPDF(BuildContext context, String pdfUrl) async {
+  Future<void> _downloadPDF(
+      BuildContext context, String pdfUrl, String pdfName) async {
     try {
       var response = await http.get(Uri.parse(pdfUrl));
       var tempDir = await getTemporaryDirectory();
-      var filePath = '${tempDir.path}/temp.pdf';
+      var filePath = '${tempDir.path}/$pdfName';
+      File pdfFile = File(filePath);
+      await pdfFile.writeAsBytes(response.bodyBytes);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('PDF Downloaded: $pdfName'),
+        ),
+      );
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
+  Future<void> _openPDF(
+      BuildContext context, String pdfUrl, String pdfName) async {
+    try {
+      var response = await http.get(Uri.parse(pdfUrl));
+      var tempDir = await getTemporaryDirectory();
+      var filePath = '${tempDir.path}/$pdfName';
       File pdfFile = File(filePath);
       await pdfFile.writeAsBytes(response.bodyBytes);
 

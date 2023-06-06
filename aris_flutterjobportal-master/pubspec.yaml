@@ -61,6 +61,7 @@ dependencies:
   shared_preferences:
   http:
   easy_pdf_viewer: ^1.0.6
+  firebase_messaging: ^11.2.0
 
 
 
