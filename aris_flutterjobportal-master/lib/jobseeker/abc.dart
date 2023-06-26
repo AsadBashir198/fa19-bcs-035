@@ -132,12 +132,7 @@ debugShowCheckedModeBanner: false,
                         ),
                       )
                   ),
-                  TextButton(
-                    onPressed: () {
-                      //forgot password screen
-                    },
-                    child: const Text('Forgot Password',),
-                  ),
+
                   Row(
                     children: <Widget>[
                       SizedBox(

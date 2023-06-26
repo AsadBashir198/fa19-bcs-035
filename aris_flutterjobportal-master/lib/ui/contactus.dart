@@ -1,99 +1,123 @@
 import 'package:flutter/material.dart';
 
+import '../admin/HomeAdmin.dart';
 
 void main() {
-  runApp( ContactUs());
+  runApp(aboutus());
 }
-class ContactUs extends StatelessWidget {
 
-
+class aboutus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold( backgroundColor: const Color(0xFF031047),
-        body: SafeArea(child:
-        Column(
-          mainAxisAlignment:  MainAxisAlignment.center,
-          children: [
-            CircleAvatar(backgroundColor: const Color(0xFF4BA5A5),
-              child: Icon(Icons.person,size: 90),
+    return MaterialApp( debugShowCheckedModeBanner: false,
+      title: 'Jobs Application',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: AboutScreen(),
+    );
+  }
+}
 
-
-              maxRadius: 70.0,
+class AboutScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor:  Color(0xFF031047),
+        centerTitle: true,
+        title: Text('About'),
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
             ),
-            Text(
-              'ASAD',
-              style:TextStyle(
-                  height: 2,
-                  fontFamily: 'SpecialElite',
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40.0),
-            ),
-            Text(
-              'FLUTTER DEVELOPER',
-              style:TextStyle(
-                  fontFamily: 'SpecialElite-Regular',
-                  color: Colors.white,
-                  height: 2.0,
-                  fontSize: 25.0),
-            ),
-
-
-            SizedBox(height: 50,
-              width: 150,
-              child: Divider(
-                thickness: 2,
-                height: 50,
-                color: Colors.black,
-
-
-              ),
-            ),
-
-
-            Card(
-              margin: EdgeInsets.symmetric(vertical: 30,horizontal: 40),
-              child: ListTile(
-                  leading: Icon(Icons.call),
-                  iconColor: const Color(0xFF4BA5A5),
-                  textColor: Colors.black,
-                  title:   Text("03099932032")
-              ),
-
-            ),
-
-            Card(
-              margin: EdgeInsets.symmetric(vertical:0,horizontal: 40),
-              child:  ListTile(
-                  leading: Icon(Icons.alternate_email_outlined),
-                  iconColor: const Color(0xFF4BA5A5),
-                  textColor: Colors.black,
-                  title:   Text("asadbashir19832@gmail.com")
-              ),
-
-            ),
-
-
-            Card(
-              margin: EdgeInsets.symmetric(vertical:28,horizontal: 40),
-              child: ListTile(
-                  leading: Icon(Icons.home_filled),
-                  iconColor:const Color(0xFF4BA5A5),
-                  textColor: Colors.black,
-                  title:   Text("Vehari")
-              ),
-
-            ),
-
-
-          ],
-        )
-
-
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  homeadmin(),),
+              );
+            }
         ),
-
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'CU JOBS',
+              style: TextStyle(
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              'Version 1.0',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            SizedBox(height: 32.0),
+            Text(
+              'Application Description',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+              child: Text(
+                'Your job search made easy. Find and apply for jobs  in various Comsats University Campuses.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16.0),
+              ),
+            ),
+            SizedBox(height: 32.0),
+            Text(
+              'Developer Information',
+              style: TextStyle(fontSize: 18.0),
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              'Asad & Awais Brothers',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            SizedBox(height: 32.0),
+            Text(
+              'Contact Information',
+              style: TextStyle(fontSize: 18.0),
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              'Email: comsatsuniversity@gmail.com',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            SizedBox(height: 32.0),
+            TextButton(
+              onPressed: () {
+                // Add functionality to open the privacy policy page
+              },
+              child: Text(
+                'Privacy Policy',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                // Add functionality to open the terms of service page
+              },
+              child: Text(
+                'Terms of Service',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

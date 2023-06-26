@@ -4,15 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_job_portal/jobseeker/abc.dart';
 import 'package:get/get.dart';
 import 'admin/login-admin.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-
-
-
 Future<void> main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(

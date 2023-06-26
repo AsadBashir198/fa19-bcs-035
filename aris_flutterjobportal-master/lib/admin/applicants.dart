@@ -73,8 +73,8 @@ class _applicantsState extends State<applicants> {
                     children: [
                       Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
 
+                          children: [
                             Text('Name:',
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                             SizedBox(width: 30.0),

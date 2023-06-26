@@ -113,7 +113,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  ContactUs()),
+                  MaterialPageRoute(builder: (context) =>  aboutus()),
                 );
 
               },
