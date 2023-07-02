@@ -84,9 +84,11 @@ class _alljobsadState extends State<alljobsad> {
 
                             Text('company:',
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 30.0),
-                            Text(snapshot.data.docs[index]['company'] ,style: TextStyle(fontSize: 16),
-                  textAlign: TextAlign.justify,),
+                            SizedBox(width: 50.0),
+                            Container(
+                              child:Text(snapshot.data.docs[index]['company'] ,style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.justify,), ),
+
                           ]
                       ),
                       SizedBox(height: 20.0),
@@ -96,9 +98,11 @@ class _alljobsadState extends State<alljobsad> {
                           children: [
                             Text('vacancies:',
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 30.0),
-                            Text(snapshot.data.docs[index]['vacancies'],style: TextStyle(fontSize: 16),
-                              textAlign: TextAlign.justify,),
+                            SizedBox(width: 43.0),
+                            Container(child: Text(snapshot.data.docs[index]['vacancies'],style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.justify,), ),
+
+
 
                           ]
 
@@ -110,9 +114,13 @@ class _alljobsadState extends State<alljobsad> {
                           children: [
 
                             Text('contact:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 49.0),
-                            Text(snapshot.data.docs[index]['contact'],style: TextStyle(fontSize: 16),
-                              textAlign: TextAlign.justify,),
+                            SizedBox(width: 62.0),
+
+                            Container(
+                              child: Text(snapshot.data.docs[index]['contact'],style: TextStyle(fontSize: 16),
+                                textAlign: TextAlign.right,),
+                            ),
+
                           ]
 
                       ),
@@ -124,8 +132,12 @@ class _alljobsadState extends State<alljobsad> {
 
                             Text('Qualification:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                             SizedBox(width: 25.0),
-                            Text(snapshot.data.docs[index]['qualification'],style: TextStyle(fontSize: 14),
-                              textAlign: TextAlign.justify,),
+                            Container(
+                              child: Text(snapshot.data.docs[index]['qualification'],style: TextStyle(fontSize: 14),
+                                textAlign: TextAlign.justify,),
+                            ),
+
+
                           ]
 
                       ),

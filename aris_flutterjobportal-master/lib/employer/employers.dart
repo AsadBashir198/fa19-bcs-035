@@ -1,8 +1,16 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter_job_portal/admin/HomeAdmin.dart';
 import 'package:flutter_job_portal/ui/settings.dart';
 import 'package:flutter_job_portal/jobseeker/home_page.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -46,7 +54,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
     '2 year',
   ];
 
-
+  AndroidNotificationChannel channel;
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
 
 
@@ -79,13 +88,134 @@ class _EditProfilePageState extends State<EditProfilePage> {
   var l_date;
   var s_date;
   bool showPassword = false;
-
-
-
-
-
-
   @override
+
+
+  void initState() {
+    super.initState();
+    // FirebaseMessaging.onMessage.listen((message) {
+    //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    //     content: Text(message.notification!.body.toString()),
+    //     duration: Duration(seconds: 10),
+    //   ),
+    //   );
+    // });
+    // FirebaseMessaging.onMessageOpenedApp.listen((message) {
+    //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    //     content: Text(message.data['name'].toString()),
+    //     duration: Duration(seconds: 10),
+    //   ),
+    //   );
+    // });
+    requestPermission();
+    loadFCM();
+    listenFCM();
+    getToken();
+    FirebaseMessaging.instance.subscribeToTopic('Flutter');
+  }
+
+  void sendPushmessage(String title,String body)async{
+    print("call");
+    try {
+      await http.post(
+        Uri.parse('https://fcm.googleapis.com/fcm/send'),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Authorization': 'key=AAAAyw0n7o4:APA91bFJl0b84aD2ktJouW5GlCpZK6JkcR8qGimmf9ENt3vQ8rO6v1M4uu7i3fxgLQcDVtKVUKoa81AfTkKOuX6HX4O19qCebF_98LqxwCisZQZg43CRet06UMpFJAofra1ZpR-hOEaR',
+        },
+        body: jsonEncode(
+          <String, dynamic>{
+            'notification': <String, dynamic>{
+              'body': body,
+              'title': title
+            },
+            'priority': 'high',
+            'data': <String, dynamic>{
+              'click_action': 'FLUTTER_NOTIFICATION_CLICK',
+              'id': '1',
+              'status': 'done'
+            },
+            "to": "/topics/Flutter",
+          },
+        ),
+      );
+    } catch (e) {
+      print("error push notification");
+    }
+  }
+  void getToken()async{
+    await FirebaseMessaging.instance.getToken().then((token) =>print(token) );
+  }
+  void requestPermission()async{
+    FirebaseMessaging messaging=FirebaseMessaging.instance;
+
+    NotificationSettings setting=await messaging.requestPermission(
+        alert: true,
+        announcement: false,
+        badge: true,
+        carPlay: false,
+        criticalAlert: false,
+        provisional: false,
+        sound: true
+    );
+    if(setting.authorizationStatus==AuthorizationStatus.authorized){
+      print('User granted permission');
+    }
+    else if(setting.authorizationStatus==AuthorizationStatus.provisional){
+      print("User granted provisional permission");
+    }
+    else{
+      print("User denied or not accept permission");
+    }
+  }
+  void listenFCM()async{
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification notification = message.notification;
+      AndroidNotification android = message.notification?.android;
+      if (notification != null && android != null && !kIsWeb) {
+        flutterLocalNotificationsPlugin.show(
+          notification.hashCode,
+          notification.title,
+          notification.body,
+          NotificationDetails(
+            android: AndroidNotificationDetails(
+              channel.id,
+              channel.name,
+
+              // TODO add a proper drawable resource to android, for now using
+              //      one that already exists in example app.
+              icon: 'launch_background',
+            ),
+          ),
+        );
+      }
+    });
+  }
+  void loadFCM()async{
+    if (!kIsWeb) {
+      channel = const AndroidNotificationChannel(
+        'high_importance_channel', // id
+        'High Importance Notifications', // title// description
+        importance: Importance.high,
+        enableVibration: true,
+      );
+
+      flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+      await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+          ?.createNotificationChannel(channel);
+
+      await FirebaseMessaging.instance
+          .setForegroundNotificationPresentationOptions(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
@@ -130,6 +260,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
               SizedBox(
                 height: 10,
+              ),
+              TextFormField(
+                controller:jobtitle,
+                decoration: InputDecoration(
+
+                  labelText: "Job_title",
+                  filled: false,
+
+                ),
+
               ),
               TextFormField(
                 controller: company,
@@ -252,16 +392,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
 
               ),
-              TextFormField(
-                controller:jobtitle,
-                decoration: InputDecoration(
 
-                  labelText: "Job_title",
-                  filled: false,
-
-                ),
-
-              ),
               DropdownButtonFormField(
                 hint: Text("Select Department"),
 
@@ -423,6 +554,33 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               ],
                             );
                           });
+
+                      //send notification
+                      if(jobtitle.text.isNotEmpty&&company.text.isNotEmpty){
+                        sendPushmessage(jobtitle.text, company.text);
+
+                        FirebaseFirestore.instance.collection('message').add({
+                          'title':jobtitle.text,
+                          'body':company.text,
+                        });
+                        FirebaseFirestore.instance.collection('Notification').doc(FirebaseAuth.instance.currentUser.uid).collection('message').add({
+                          'title':jobtitle.text,
+                          'body':company.text,
+                        });
+                        company.clear();
+                        jobtitle.clear();
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Message send Successfully"),
+                          duration: Duration(seconds: 5),
+                        ),
+                        );
+                      }
+                      else{
+                        const snackBar = SnackBar(
+                          content: Text('Please fill all data'),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
                     },
                     color: Colors.green,
                     padding: EdgeInsets.symmetric(horizontal: 45),
