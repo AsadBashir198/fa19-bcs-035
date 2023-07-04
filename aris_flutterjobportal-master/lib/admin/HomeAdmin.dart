@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_job_portal/admin/notifyad.dart';
 import 'package:flutter_job_portal/admin/resumereceive.dart';
+import 'package:flutter_job_portal/admin/settingAdmin.dart';
 import 'package:flutter_job_portal/jobseeker/UserProfile.dart';
 import 'package:flutter_job_portal/employer/employers.dart';
 import 'package:flutter_job_portal/ui/settings.dart';
@@ -102,7 +103,7 @@ class _MyHomePageAdState extends State<MyHomePageAd> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  SettingsPage()),
+                  MaterialPageRoute(builder: (context) =>  settingAdmin()),
                 );
 
               },

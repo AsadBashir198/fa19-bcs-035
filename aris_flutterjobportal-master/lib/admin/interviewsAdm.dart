@@ -72,7 +72,7 @@ class _interviewsAState extends State<interviewsA> {
                           children: [
 
                             Text('Company:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 49.0),
+                            SizedBox(width: 50.0),
                             Text(snapshot.data.docs[index]['company']),
                           ]
 
@@ -84,7 +84,7 @@ class _interviewsAState extends State<interviewsA> {
                           children: [
 
                             Text('Job_name:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 49.0),
+                            SizedBox(width: 45.0),
                             Text(snapshot.data.docs[index]['jobtitle']),
                           ]
 
@@ -96,7 +96,7 @@ class _interviewsAState extends State<interviewsA> {
 
                             Text('Interview_Date:',
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 30.0),
+                            SizedBox(width: 14.0),
                             Text(snapshot.data.docs[index]['interviewdate']),
                           ]
 

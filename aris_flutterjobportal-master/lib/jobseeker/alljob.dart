@@ -90,53 +90,89 @@ class _alljobsState extends State<alljobs> {
                         ),
                         SizedBox(height:  10.0),
                         Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-
-                              Text('company:',
-                                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                              SizedBox(width: 30.0),
-                              Text(snapshot.data.docs[index]['company'],style: TextStyle(fontSize: 16),
-                                textAlign: TextAlign.justify,),
-                            ]
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'company:',
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(width: 50.0),
+                            Container(
+                              child: Text(
+                                snapshot.data.docs[index]['company'],
+                                style: TextStyle(fontSize: 16),
+                                textAlign: TextAlign.justify,
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 10.0),
+                        SizedBox(height:  10.0),
                         Row(
-
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('vacancies:',
-                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                    SizedBox(width: 30.0),
-                        Text(snapshot.data.docs[index]['vacancies']),
-
-                  ]
-
-                ),
-                        SizedBox(height: 10.0),
-                        Row(
-
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-
-                              Text('contact:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                              SizedBox(width: 49.0),
-                              Text(snapshot.data.docs[index]['contact']),
-                            ]
-
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'vacancies:',
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(width: 43.0),
+                            Container(
+                              child: Text(
+                                snapshot.data.docs[index]['vacancies'],
+                                style: TextStyle(fontSize: 16),
+                                textAlign: TextAlign.justify,
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 10.0),
+                        SizedBox(height:  10.0),
                         Row(
-
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-
-                              Text('Qualification:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                              SizedBox(width: 25.0),
-                              Text(snapshot.data.docs[index]['qualification']),
-                            ]
-
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'contact:',
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(width: 62.0),
+                            Container(
+                              child: Text(
+                                snapshot.data.docs[index]['contact'],
+                                style: TextStyle(fontSize: 16),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ],
                         ),
+                        SizedBox(height:  10.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Qualification:',
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(width: 25.0),
+                            Container(
+                              child: Text(
+                                snapshot.data.docs[index]['qualification'],
+                                style: TextStyle(fontSize: 14),
+                                textAlign: TextAlign.justify,
+                              ),
+                            ),
+                          ],
+                        ),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                              children: [

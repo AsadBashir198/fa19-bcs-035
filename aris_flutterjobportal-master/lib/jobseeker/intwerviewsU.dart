@@ -74,8 +74,10 @@ class _interview_userState extends State<interview_user> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text('Job_Title:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                              SizedBox(width: 49.0),
-                              Text(snapshot.data.docs[index]['jobtitle']),
+                              SizedBox(width: 35.0),
+                              Container(child:Text(snapshot.data.docs[index]['jobtitle'],style: TextStyle(fontSize: 16),
+                                textAlign: TextAlign.right,), ),
+
                             ]
                         ),
                         SizedBox(height:  10.0),
@@ -86,7 +88,10 @@ class _interview_userState extends State<interview_user> {
                               Text('Company:',
                                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                               SizedBox(width: 30.0),
-                              Text(snapshot.data.docs[index]['company']),
+                              Container(child:  Text(snapshot.data.docs[index]['company'],style: TextStyle(fontSize: 16),
+                                textAlign: TextAlign.right),
+                              ),
+
                             ]
                         ),
                         SizedBox(height: 10.0),
@@ -96,8 +101,11 @@ class _interview_userState extends State<interview_user> {
                             children: [
 
                               Text('Contact:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                              SizedBox(width: 49.0),
-                              Text(snapshot.data.docs[index]['contact']),
+                              SizedBox(width: 44.0),
+
+                              Container(child:Text(snapshot.data.docs[index]['contact'],style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.right) ,),
+
                             ]
 
                         ),
@@ -106,8 +114,10 @@ class _interview_userState extends State<interview_user> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text('Test_date:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                              SizedBox(width: 49.0),
-                              Text(snapshot.data.docs[index]['test_date']),
+                              SizedBox(width: 32.0),
+                              Container(child: Text(snapshot.data.docs[index]['test_date'],style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.right),)
+
                             ]
                         ),
                         SizedBox(height:  10.0),
@@ -115,8 +125,10 @@ class _interview_userState extends State<interview_user> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text('Interview_Date:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                              SizedBox(width: 49.0),
-                              Text(snapshot.data.docs[index]['interviewdate']),
+                              SizedBox(width: 5.0),
+                              Container(child:Text(snapshot.data.docs[index]['interviewdate'],style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.right))
+
                             ]
                         ),
 

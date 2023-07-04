@@ -3,6 +3,9 @@ import 'package:flutter_job_portal/firebase/autication.dart';
 import 'package:flutter_job_portal/jobseeker/si.dart';
 import 'package:flutter_job_portal/jobseeker/home_page.dart';
 
+import '../admin/forpass.dart';
+import 'forgetPUSer.dart';
+
 
 class abc extends StatefulWidget {
   @override
@@ -131,6 +134,16 @@ debugShowCheckedModeBanner: false,
                           onPrimary: Colors.white,
                         ),
                       )
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      //forgot password screen
+                      Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => forgetUser()),
+                      );
+
+                    },
+                    child: const Text('Forgot Password',),
                   ),
 
                   Row(

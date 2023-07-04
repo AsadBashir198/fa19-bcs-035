@@ -5,6 +5,8 @@ import 'package:flutter_job_portal/jobseeker/si.dart';
 import 'package:flutter_job_portal/admin/signup-admin.dart';
 import 'package:flutter_job_portal/jobseeker/home_page.dart';
 
+import 'forpass.dart';
+
 
 class loginAd extends StatefulWidget {
   @override
@@ -132,6 +134,10 @@ class _loginAdState extends State<loginAd> {
                   TextButton(
                     onPressed: () {
                       //forgot password screen
+                      Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen()),
+                      );
+
                     },
                     child: const Text('Forgot Password',),
                   ),

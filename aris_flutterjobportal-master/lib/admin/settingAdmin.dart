@@ -4,14 +4,15 @@ import 'package:flutter_job_portal/jobseeker/abc.dart';
 
 import '../admin/chpassword.dart';
 import '../admin/social.dart';
-import 'contactus.dart';
+import '../ui/contactus.dart';
+import 'login-admin.dart';
 
-class SettingsPage extends StatefulWidget {
+class settingAdmin extends StatefulWidget {
   @override
-  _SettingsPageState createState() => _SettingsPageState();
+  _settingAdminState createState() => _settingAdminState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _settingAdminState extends State<settingAdmin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,7 +134,7 @@ class _SettingsPageState extends State<SettingsPage> {
         context,
         PageRouteBuilder(pageBuilder: (BuildContext context, Animation animation,
             Animation secondaryAnimation) {
-          return abc();
+          return loginAd();
         }, transitionsBuilder: (BuildContext context, Animation<double> animation,
             Animation<double> secondaryAnimation, Widget child) {
           return new SlideTransition(
