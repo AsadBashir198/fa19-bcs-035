@@ -127,6 +127,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
               },
             ),
+            ListTile(
+              title: const Text('User Profile'),textColor:Colors.white,
+              leading:Icon(Icons.person),iconColor: Colors.white,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  userprofile()),
+                );
+
+              },
+            ),
           ],
         ),
       ),

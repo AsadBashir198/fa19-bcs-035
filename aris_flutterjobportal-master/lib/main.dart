@@ -67,11 +67,13 @@ class _splash1State extends State<splash1> {
 class MyApp extends StatelessWidget {
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: _initialization,
       builder: (context, snapshot) {
+        // Check for Errors
         if (snapshot.hasError) {
           print("Something Went Wrong");
         }
@@ -79,91 +81,85 @@ class MyApp extends StatelessWidget {
           return Center(child: CircularProgressIndicator());
         }
 
-        return WillPopScope(
-          onWillPop: () async {
-            return false; // Disable the back button
-          },
-          child: Container(
-            color: Colors.white,
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Flutter Demo',
-              theme: ThemeData.light(),
-              home: SafeArea(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: const Color(0xFF4BA5A5),
-                      radius: 140,
-                      child: CircleAvatar(
-                        radius: 130,
-                        backgroundImage: AssetImage(
-                          'assets/screenshots/COMSATS_new_logo.jpg',
-                        ),
+        return Container(
+          color: Colors.white,
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: ThemeData.light(),
+            home: SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: const Color(0xFF4BA5A5),
+                    radius: 140,
+                    child: CircleAvatar(
+                      radius: 130,
+                      backgroundImage:
+                      AssetImage('assets/screenshots/COMSATS_new_logo.jpg'),
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  Container(
+                    child: Text(
+                      "Login As a ",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 25,
+                        inherit: false,
                       ),
                     ),
-                    SizedBox(height: 40),
-                    Container(
-                      child: Text(
-                        "Login As a ",
-                        style: TextStyle(
-                          color: Colors.black,
+                  ),
+                  SizedBox(height: 50),
+                  Container(
+                    child: ElevatedButton(
+                      child: Text('Admin'),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFF4BA5A5),
+                        fixedSize: const Size(200, 50),
+                        textStyle: const TextStyle(
+                          color: Colors.white,
                           fontSize: 25,
-                          inherit: false,
+                          fontStyle: FontStyle.normal,
                         ),
+                        shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.elliptical(2, 4),
+                          ),
+                        ),
+                        shadowColor: Colors.lightBlue,
+                      ),
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => loginAd()),
                       ),
                     ),
-                    SizedBox(height: 50),
-                    Container(
-                      child: ElevatedButton(
-                        child: Text('Admin'),
-                        style: ElevatedButton.styleFrom(
-                          primary: Color(0xFF4BA5A5),
-                          fixedSize: const Size(200, 50),
-                          textStyle: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontStyle: FontStyle.normal,
-                          ),
-                          shape: BeveledRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.elliptical(2, 4),
-                            ),
-                          ),
-                          shadowColor: Colors.lightBlue,
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    child: ElevatedButton(
+                      child: Text('Jobseeker'),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFF4BA5A5),
+                        fixedSize: const Size(200, 50),
+                        textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontStyle: FontStyle.normal,
                         ),
-                        onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => loginAd()),
+                        shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.elliptical(2, 4),
+                          ),
                         ),
+                        shadowColor: Colors.lightBlue,
+                      ),
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => abc()),
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Container(
-                      child: ElevatedButton(
-                        child: Text('Jobseeker'),
-                        style: ElevatedButton.styleFrom(
-                          primary: Color(0xFF4BA5A5),
-                          fixedSize: const Size(200, 50),
-                          textStyle: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontStyle: FontStyle.normal,
-                          ),
-                          shape: BeveledRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.elliptical(2, 4),
-                            ),
-                          ),
-                          shadowColor: Colors.lightBlue,
-                        ),
-                        onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => abc()),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

@@ -12,7 +12,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:image_picker/image_picker.dart';
 
-class Resume extends StatelessWidget {
+class userprofile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
