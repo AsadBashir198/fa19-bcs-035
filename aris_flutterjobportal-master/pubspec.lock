@@ -314,6 +314,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
+  flutter_date_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_date_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.8"
   flutter_datetime_picker:
     dependency: "direct main"
     description:

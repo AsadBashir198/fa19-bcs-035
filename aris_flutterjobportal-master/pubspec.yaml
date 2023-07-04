@@ -62,6 +62,8 @@ dependencies:
   easy_pdf_viewer: ^1.0.6
   firebase_messaging: ^11.2.0
   flutter_local_notifications: ^9.7.0
+  flutter_date_picker:
+
 
 
 

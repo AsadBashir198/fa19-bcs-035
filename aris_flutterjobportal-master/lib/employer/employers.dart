@@ -263,237 +263,393 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
               TextFormField(
                 controller:jobtitle,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Job_title",
-                  filled: false,
-
+                  hintText: "Job_Title",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
 
+              ),
+              SizedBox(
+                height: 10,
               ),
               TextFormField(
                 controller: company,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Company",
-                  filled: false,
-
+                  hintText: "Company",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
 
+              ),
+              SizedBox(
+                height: 10,
               ),
               TextFormField(
-                controller: designation,
+                controller:designation,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Designation",
-                  filled: false,
-
+                  hintText: "Designation",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
 
               ),
+              SizedBox(height: 10),
               TextFormField(
                 controller: Contact,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Contact",
-                  filled: false,
-
+                  hintText: "Contact",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
 
               ),
+              SizedBox(height: 10),
               TextFormField(
                 controller: address,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Address",
-                  filled: false,
-
+                  hintText: "Address",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
 
               ),
+              SizedBox(height: 10),
               TextFormField(
                 controller: qualification,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Qualification",
-                  filled: false,
-
+                  hintText: "Qualification",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
 
               ),
+              SizedBox(height: 10,),
               TextFormField(
                 controller: vacancies,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Vacancies",
-                  filled: false,
-
+                  hintText: "Vacancies",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
 
+
               ),
+              SizedBox(height: 10,),
               TextFormField(
                 controller: description,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Description",
-                  filled: false,
-
+                  hintText: "Description",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
-
               ),
+              SizedBox(height: 10,),
+
               TextFormField(
                 controller: minsalary,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Min_Salary",
-                  filled: false,
-
+                  hintText: "Min_Salary",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
 
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 10.0),
               TextFormField(
                 controller:maxsalary,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "Max_Salary",
-                  filled: false,
-
+                  hintText: "Max_Salary",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide:
+                    BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
-
-              ),
-              TextFormField(
-                controller:lastdate,
-                decoration: InputDecoration(
-
-                  labelText: "last_date",
-                  filled: false,
-
-                ),
-
-              ),
-              TextFormField(
-                controller:testdate,
-                decoration: InputDecoration(
-
-                  labelText: "Test_date",
-                  filled: false,
-
-                ),
-
-              ),
-              TextFormField(
-                controller:interviewdate,
-                decoration: InputDecoration(
-
-                  labelText: "Interview_date",
-                  filled: false,
-
-                ),
-
-              ),
-
-              DropdownButtonFormField(
-                hint: Text("Select Department"),
-
-
-
-                // Initial Value
-                value: dropdownvalue1,
-
-                // Down Arrow Icon
-                icon: const Icon(Icons.keyboard_arrow_down),
-
-                // Array list of items
-                items: Department.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(),
-                // After selecting the desired option,it will
-                // change button value to selected value
-                onChanged: (String newValue) {
-                  setState(() {
-                    dropdownvalue = newValue;
-                  });
-                },
               ),
               SizedBox(
-                height: 25,
-              ),
-              DropdownButtonFormField(
-
-
-                // Initial Value
-                value: dropdownvalue2,
-
-                // Down Arrow Icon
-                icon: const Icon(Icons.keyboard_arrow_down),
-
-                // Array list of items
-                items: Category.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(),
-                // After selecting the desired option,it will
-                // change button value to selected value
-                onChanged: (String newValue) {
-                  setState(() {
-                    dropdownvalue = newValue;
-                  });
-                },
-              ),
-              SizedBox(height: 25.0,),
-              DropdownButtonFormField(
-
-
-                // Initial Value
-                value: dropdownvalue3,
-
-                // Down Arrow Icon
-                icon: const Icon(Icons.keyboard_arrow_down),
-
-                // Array list of items
-                items: experience.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(),
-                // After selecting the desired option,it will
-                // change button value to selected value
-                onChanged: (String newValue) {
-                  setState(() {
-                    dropdownvalue = newValue;
-                  });
-                },
-              ),
-              SizedBox(
-                height: 25,
+                height: 10,
               ),
               TextFormField(
-                controller:lastdate,
+                controller: startdate,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "last_date",
-                  filled: false,
-
+                  hintText: "start_date",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
+                onTap: () async {
+                  DateTime selectedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                  );
 
+                  if (selectedDate != null) {
+                    setState(() {
+                      startdate.text = selectedDate.toString().split(' ')[0];
+                    });
+                  }
+                },
               ),
+              SizedBox(height: 10),
               TextFormField(
-                controller:startdate,
+                controller: lastdate,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-
-                  labelText: "start_date",
-                  filled: false,
-
+                  hintText: "last_Date",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
                 ),
+                onTap: () async {
+                  DateTime selectedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                  );
 
+                  if (selectedDate != null) {
+                    setState(() {
+                      lastdate.text = selectedDate.toString().split(' ')[0];
+                    });
+                  }
+                },
               ),
+
+
+              SizedBox(height: 10,),
+              TextFormField(
+                controller: testdate,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  hintText: "test_date",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                ),
+                onTap: () async {
+                  DateTime selectedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                  );
+
+                  if (selectedDate != null) {
+                    setState(() {
+                      testdate.text = selectedDate.toString().split(' ')[0];
+                    });
+                  }
+                },
+              ),
+              SizedBox(height: 10,),
+              TextFormField(
+                controller: interviewdate,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  hintText: "interview_date",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.title,
+                    color: const Color(0xFF4BA5A5),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(width: 3, color: const Color(0xFF4BA5A5)),
+                  ),
+                ),
+                onTap: () async {
+                  DateTime selectedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                  );
+
+                  if (selectedDate != null) {
+                    setState(() {
+                      interviewdate.text = selectedDate.toString().split(' ')[0];
+                    });
+                  }
+                },
+              ),
+
+
               SizedBox(
                 height: 25,
               ),
@@ -582,7 +738,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       }
                     },
-                    color: Colors.green,
+                    color: const Color(0xFF4BA5A5),
+
                     padding: EdgeInsets.symmetric(horizontal: 45),
                     elevation: 2,
                     shape: RoundedRectangleBorder(

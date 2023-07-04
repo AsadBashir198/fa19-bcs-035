@@ -77,10 +77,11 @@ class _applicantsState extends State<applicants> {
                           children: [
                             Text('Name:',
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 30.0),
-                            Text(snapshot.data.docs[index]['name']),
-                          ]
+                            SizedBox(width: 62.0),
 
+                            Container(child:  Text(snapshot.data.docs[index]['name'],style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.right,), ),
+                          ]
                       ),
                       SizedBox(height: 10.0),
                       Row(
@@ -89,8 +90,10 @@ class _applicantsState extends State<applicants> {
                           children: [
 
                             Text('Job_name:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 49.0),
-                            Text(snapshot.data.docs[index]['post']),
+                            SizedBox(width: 30.0),
+                            Container(child: Text(snapshot.data.docs[index]['post'],style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.right,),),
+
                           ]
 
                       ),
@@ -101,11 +104,10 @@ class _applicantsState extends State<applicants> {
                           children: [
                             Text('email:',
                               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 30.0),
-                            Text(snapshot.data.docs[index]['e_mail']),
-
+                            SizedBox(width: 66.0),
+                            Container(child: Text(snapshot.data.docs[index]['e_mail'],style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.right,), ),
                           ]
-
                       ),
                       SizedBox(height: 10.0),
                       Row(
@@ -114,20 +116,22 @@ class _applicantsState extends State<applicants> {
                           children: [
 
                             Text('phone:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 49.0),
-                            Text(snapshot.data.docs[index]['ph']),
+                            SizedBox(width: 62.0),
+                            Container(child:Text(snapshot.data.docs[index]['ph'],style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.right,),
+                            ),
                           ]
-
                       ),
                       SizedBox(height: 10.0),
                       Row(
-
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-
                             Text('Company:',style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                            SizedBox(width: 49.0),
-                            Text(snapshot.data.docs[index]['company']),
+                            SizedBox(width: 32.0),
+                            Container(child:Text(snapshot.data.docs[index]['company'],style: TextStyle(fontSize: 16),
+                              textAlign: TextAlign.right, ),
+                            ),
+
                           ]
 
                       ),
